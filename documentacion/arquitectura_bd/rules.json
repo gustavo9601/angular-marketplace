@@ -1,0 +1,45 @@
+{
+    "rules": {
+        "categories": {
+            ".read": true,
+            ".write": "auth != null && auth.email == 'ing.gustavo.marquez@gmail.com'",
+            "$name": {
+                ".validate": "newData.child('name').isString() && newData.child('name').val().length < 100 && newData.child('name').val().matches(/^([0-9a-zñáéíóú ]+)$/i)"
+
+            }
+        },
+        "sub-categories": {
+            ".read": true,
+            ".write": "auth != null && auth.email == 'ing.gustavo.marquez@gmail.com'",
+            ".indexOn": ["title_list", "url", "category"]
+        },
+        "products": {
+            ".read": true,
+            ".write": "auth != null"
+        },
+        "users": {
+            ".read": true,
+            ".write": true
+        },
+        "stores": {
+            ".read": true,
+            ".write": "auth != null"
+        },
+        "orders": {
+            ".read": true,
+            ".write": "auth != null"
+        },
+        "disputes": {
+            ".read": true,
+            ".write": "auth != null"
+        },
+        "messages": {
+            ".read": true,
+            ".write": "auth != null"
+        },
+        "sales": {
+            ".read": true,
+            ".write": "auth != null"
+        }
+    }
+}

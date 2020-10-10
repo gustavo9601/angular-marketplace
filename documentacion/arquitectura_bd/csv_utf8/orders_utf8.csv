@@ -1,0 +1,3 @@
+﻿store;customer;product;quantity;price;email;country;state;city;phone;address;process;status
+Digitalworld Us;rogelius;Unero Military Classical Backpack;2;205.00;gopro@gmail.com;United States;Florida;Miami;+1888-888-54-56;17 Queen St, Melbourne;"[{""stage"":""reviewed"",""status"":""pending"",""comment"":"""",""date"":""2020-06-15""},
+{""stage"":""sent"",""status"":""pending"",""comment"":"""",""date"":""2020-06-19""},{""stage"":""delivered"",""status"":""pending"",""comment"":"""",""date"":""2020-06-23""}]";pending

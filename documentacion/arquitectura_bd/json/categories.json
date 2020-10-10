@@ -1,0 +1,50 @@
+[
+   {
+      "name":"Consumer Electric",
+      "title_list":"[\"Electronic\",\"Accessories and Parts\"]",
+      "url":"consumer-electric",
+      "image":"comsumer-electric.jpg",
+      "icon":"icon-laundry",
+      "view":2
+   },
+   {
+      "name":"Clothing and Apparel",
+      "title_list":"[\"Mens\",\"Womens\",\"Kids\"]",
+      "url":"clothing-apparel",
+      "image":"clothing-apparel.jpg",
+      "icon":"icon-shirt",
+      "view":4
+   },
+   {
+      "name":"Home, Garden and Kitchen",
+      "title_list":"[\"Home\",\"Garden\",\"Kitchen\"]",
+      "url":"home-kitchen",
+      "image":"home-kitchen.jpg",
+      "icon":"icon-lampshade",
+      "view":5
+   },
+   {
+      "name":"Health and Beauty",
+      "title_list":"[\"Health\",\"Beauty\"]",
+      "url":"health-beauty",
+      "image":"health-beauty.jpg",
+      "icon":"icon-heart-pulse",
+      "view":23
+   },
+   {
+      "name":"Jewelry and Watches",
+      "title_list":"[\"Jewelry\",\"Watches\"]",
+      "url":"jewelry-watches",
+      "image":"jewelry-watches.jpg",
+      "icon":"icon-diamond2",
+      "view":3
+   },
+   {
+      "name":"Computer and Technology",
+      "title_list":"[\"Computer\",\"Technology\"]",
+      "url":"computer-technology",
+      "image":"computer-technology.jpg",
+      "icon":"icon-desktop",
+      "view":45
+   }
+]
