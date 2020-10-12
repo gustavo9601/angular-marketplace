@@ -76,39 +76,19 @@ Menú
           <div class="menu__content">
             <ul class="menu--dropdown">
 
-              <li class="menu-item-has-children has-mega-menu" *ngFor="let category of categories">
+              <li class="menu-item-has-children has-mega-menu" *ngFor="let category of categories; let i = index">
                 <a [routerLink]="['/products', category.url]"><i [class]="category.icon"></i> {{category.name}}</a>
                 <div class="mega-menu">
-                  <div class="mega-menu__column">
-                    <h4>Electronic<span class="sub-toggle"></span></h4>
+
+                  <div
+                    *ngFor="let title_item of category.title_list_items"
+                    class="mega-menu__column">
+                    <h4>{{title_item.title}}<span class="sub-toggle"></span></h4>
                     <ul class="mega-menu__list">
-                      <li><a href="#">Home Audio &amp; Theathers</a>
-                      </li>
-                      <li><a href="#">TV &amp; Videos</a>
-                      </li>
-                      <li><a href="#">Camera, Photos &amp; Videos</a>
-                      </li>
-                      <li><a href="#">Cellphones &amp; Accessories</a>
-                      </li>
-                      <li><a href="#">Headphones</a>
-                      </li>
-                      <li><a href="#">Videosgames</a>
-                      </li>
-                      <li><a href="#">Wireless Speakers</a>
-                      </li>
-                      <li><a href="#">Office Electronic</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="mega-menu__column">
-                    <h4>Accessories &amp; Parts<span class="sub-toggle"></span></h4>
-                    <ul class="mega-menu__list">
-                      <li><a href="#">Digital Cables</a>
-                      </li>
-                      <li><a href="#">Audio &amp; Video Cables</a>
-                      </li>
-                      <li><a href="#">Batteries</a>
-                      </li>
+                      <li *ngFor="let sub_category of title_item.sub_categories">
+                        <a [routerLink]="['/products',sub_category.url]">
+                          {{sub_category.name}}
+                        </a>
                     </ul>
                   </div>
                 </div>
@@ -124,8 +104,8 @@ Menú
       </div><!-- End Header Content Left-->
 
       <!--=====================================
-Search
-======================================-->
+  Search
+  ======================================-->
 
       <div class="header__content-center">
         <form class="ps-form--quick-search" action="index.html" method="get">
@@ -148,16 +128,16 @@ Search
         <div class="header__actions">
 
           <!--=====================================
-Wishlist
-======================================-->
+  Wishlist
+  ======================================-->
 
           <a class="header__extra" href="#">
             <i class="icon-heart"></i><span><i>0</i></span>
           </a>
 
           <!--=====================================
-Cart
-======================================-->
+  Cart
+  ======================================-->
 
           <div class="ps-cart--mini">
 
@@ -246,3 +226,4 @@ Cart
   </div><!-- End Header Content-->
 
 </header>
+

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ConfigService} from '../../services/config.service';
 
 @Component({
@@ -7,6 +7,8 @@ import {ConfigService} from '../../services/config.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+
+  @Input('categories') categories: Object;
 
   constructor(public _configService: ConfigService) {
   }

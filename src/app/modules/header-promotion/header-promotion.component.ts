@@ -31,7 +31,7 @@ export class HeaderPromotionComponent implements OnInit {
 
         // Seteando el key del objeto devuelto en base al indice random y parseandolo
         this.top_banner = JSON.parse(response[0][Object.keys(response[0])[index_ramdom]].top_banner);
-        console.log(' this.topBanner', this.top_banner);
+        // console.log(' this.topBanner', this.top_banner);
 
         this.preload = false;
       }

@@ -4,7 +4,7 @@ import {Component, OnInit} from '@angular/core';
 declare var jQuery: any;
 declare var $: any;
 declare var StickySidebar: any;
-declare var google:any;
+declare var google: any;
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,16 @@ declare var google:any;
 })
 export class AppComponent implements OnInit {
   title = 'marketplace';
+
+  categories: Object;
+
+  constructor() {
+
+  }
+
+  getEventCategories($event){
+    this.categories = $event;
+  }
 
   ngOnInit(): void {
     (function($) {

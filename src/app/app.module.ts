@@ -10,6 +10,7 @@ import { NewletterComponent } from './modules/newletter/newletter.component';
 import { FooterComponent } from './modules/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
     HeaderPromotionComponent,
     HeaderMobileComponent,
     NewletterComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

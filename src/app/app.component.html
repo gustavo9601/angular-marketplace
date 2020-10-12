@@ -6,12 +6,15 @@ Header Promotion
 <!--=====================================
 Header
 ======================================-->
-<app-header></app-header>
+<!--Recibe del header las categorieas, y el app.component lo envia a los otros componentes-->
+<app-header (categories_emit)="getEventCategories($event)"></app-header>
+
 
 <!--=====================================
 Header Mobile
 ======================================-->
-<app-header-mobile></app-header-mobile>
+
+<app-header-mobile [categories]="categories"></app-header-mobile>
 
 
 <!--=====================================
@@ -22,4 +25,4 @@ Newletter
 <!--=====================================
 Footer
 ======================================-->
-<app-footer></app-footer>
+<app-footer [categories]="categories"></app-footer>
