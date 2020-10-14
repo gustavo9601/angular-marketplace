@@ -1,0 +1,23 @@
+<div class="ps-promotions" *ngIf="!preload">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div
+        *ngFor="let banner of banner_promotions"
+        class="col-md-6 col-12">
+        <a class="ps-collection" [routerLink]="banner['url']">
+          <img src="{{_configService.path}}img/products/{{banner['category']}}/default/{{banner['default_banner']}}" alt="">
+        </a>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+</div><!-- End Home Promotions-->
+
+<app-preload *ngIf="preload"></app-preload>

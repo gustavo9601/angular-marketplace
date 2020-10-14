@@ -10,11 +10,13 @@ import {ProductsService} from '../../services/products.service';
 export class HeaderPromotionComponent implements OnInit {
 
   top_banner: Object;
+  category: Object;
   preload: boolean;
 
   constructor(public _configService: ConfigService,
               private _productsService: ProductsService) {
     this.top_banner = {};
+    this.category = null;
     this.preload = false;
   }
 
@@ -32,6 +34,12 @@ export class HeaderPromotionComponent implements OnInit {
         // Seteando el key del objeto devuelto en base al indice random y parseandolo
         this.top_banner = JSON.parse(response[0][Object.keys(response[0])[index_ramdom]].top_banner);
         // console.log(' this.topBanner', this.top_banner);
+
+
+        // console.log("object", response[0][Object.keys(response[0])[index_ramdom]].category);
+
+        this.category = response[0][Object.keys(response[0])[index_ramdom]].category;
+        // console.log("this.category", this.category);
 
         this.preload = false;
       }

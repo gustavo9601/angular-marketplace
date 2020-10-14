@@ -1,0 +1,36 @@
+<div class="ps-home-banner"
+     *ngIf="!preload"
+>
+  <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000"
+       data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1"
+       data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on"
+       data-owl-animate-in="fadeIn" data-owl-animate-out="fadeOut">
+
+    <!--Usando el attr que angular lo maneje, para que pueda ser accedido por jquery-->
+    <div class="ps-banner--market-4"
+         [attr.data-background]="_configService.path + 'img/products/' +slide['category'] +'/horizontal/' + slide['horizontal_slider']['IMG tag']"
+         *ngFor="let slide of banner_home;let isLastIndex = last"
+         src="{{_configService.path}}img/products/{{slide['category']}}/horizontal/{{slide['horizontal_slider']['IMG tag']}}">
+      <img
+        src="{{_configService.path}}img/products/{{slide['category']}}/horizontal/{{slide['horizontal_slider']['IMG tag']}}"
+        alt="">
+      <div class="ps-banner__content">
+        <h4>{{slide['horizontal_slider']["H4 tag"]}}</h4>
+        <h3>{{slide['horizontal_slider']["H3-1 tag"]}}<br/>
+          <h3>{{slide['horizontal_slider']["H3-2 tag"]}}</h3>
+          <p>{{slide['horizontal_slider']["H3-3 tag"]}}<strong> {{slide['horizontal_slider']["H3-4s tag"]}}</strong></p>
+        </h3>
+        <a class="ps-btn" [routerLink]="['/product', slide['url']]">{{slide['horizontal_slider']["Button tag"]}}</a>
+      </div>
+
+      <!--Pregunta si es el ulitmo indice, ejecute el callback, en caso contrario que no haga nada-->
+      {{isLastIndex ? callBack() : ''}}
+    </div>
+
+
+  </div>
+
+</div><!-- End Home Banner-->
+
+<!--Preload-->
+<app-preload *ngIf="preload"></app-preload>

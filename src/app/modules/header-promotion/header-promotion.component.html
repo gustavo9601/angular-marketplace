@@ -1,5 +1,6 @@
 
-<div *ngIf="!preload && top_banner != null" class="ps-block--promotion-header bg--cover"  style="background: url({{_configService.path}}img/banner/top/{{top_banner['IMG tag']}});">
+<div *ngIf="!preload && top_banner != null" class="ps-block--promotion-header bg--cover"
+     style="background: url({{_configService.path}}img/products/{{category}}/top/{{top_banner['IMG tag']}});">
   <div class="container">
     <div class="ps-block__left">
       <h3>{{top_banner['H3 tag']}}</h3>
@@ -15,6 +16,4 @@
 </div>
 
 <!--PRELOAD-->
-<div *ngIf="preload && top_banner == null" class="d-flex justify-content-center">
-  <div class="spinner-border text-muted my-3"></div>
-</div>
+<app-preload *ngIf="preload && top_banner == null" ></app-preload>

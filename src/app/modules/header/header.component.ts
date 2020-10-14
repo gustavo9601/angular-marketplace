@@ -38,8 +38,8 @@ export class HeaderComponent implements OnInit {
         });
 
         // Enviando la informacion optenida al padre para ser distribuida en los otros componentes
-        this.emitCategoriesParent()
-        console.log('this.categories_updated', this.categories);
+        this.emitCategoriesParent();
+        // console.log('this.categories_updated', this.categories);
       }
     );
   }
