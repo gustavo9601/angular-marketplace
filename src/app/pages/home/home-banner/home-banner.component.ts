@@ -30,14 +30,14 @@ export class HomeBannerComponent implements OnInit {
       (response) => {
 
         // Obtener la longitud del objeto
-        const size_response = Object.values(response[0]).length;
+        const size_response = Object.values(response).length;
 
         // Si hay mas de 5 productos en BD
         if (size_response > 5) {
           // Obtener un numero aletaroio entre 0 y la cantidad de elementos
           const index_ramdom = Math.floor(Math.random() * (size_response - 5));
           // de objeto a array con indices numericos
-          const object_to_array = Object.values(response[0]);
+          const object_to_array = Object.values(response);
           // Cortando el arreglo para retornar solo 5 slides
           const slides = object_to_array.slice(index_ramdom, (index_ramdom + 5));
 

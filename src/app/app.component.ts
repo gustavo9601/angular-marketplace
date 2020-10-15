@@ -278,21 +278,7 @@ export class AppComponent implements OnInit {
         });
       }
 
-      function rating() {
-        $('select.ps-rating').each(function() {
-          var readOnly;
-          if ($(this).attr('data-read-only') == 'true') {
-            readOnly = true;
-          } else {
-            readOnly = false;
-          }
-          $(this).barrating({
-            theme: 'fontawesome-stars',
-            readonly: readOnly,
-            emptyValue: '0'
-          });
-        });
-      }
+
 
 
       function backToTop() {
@@ -388,30 +374,6 @@ export class AppComponent implements OnInit {
         });
       }
 
-      function countDown() {
-        var time = $('.ps-countdown');
-        time.each(function() {
-          var el = $(this),
-            value = $(this).data('time');
-          var countDownDate = new Date(value).getTime();
-          var timeout = setInterval(function() {
-            var now = new Date().getTime(),
-              distance = countDownDate - now;
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24)),
-              hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-              minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-              seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            el.find('.days').html(days);
-            el.find('.hours').html(hours);
-            el.find('.minutes').html(minutes);
-            el.find('.seconds').html(seconds);
-            if (distance < 0) {
-              clearInterval(timeout);
-              el.closest('.ps-section').hide();
-            }
-          }, 1000);
-        });
-      }
 
       function productFilterToggle() {
         $('.ps-filter__trigger').on('click', function(e) {
@@ -510,16 +472,6 @@ export class AppComponent implements OnInit {
         });
       }
 
-      function progressBar() {
-        var progress = $('.ps-progress');
-        progress.each(function(e) {
-          var value = $(this).data('value');
-          $(this).find('span').css({
-            width: value + '%'
-          });
-        });
-      }
-
       function customScrollbar() {
         $('.ps-custom-scrollbar').each(function() {
           var height = $(this).data('height');
@@ -551,21 +503,16 @@ export class AppComponent implements OnInit {
         masonry('.ps-masonry');
         productFilterToggle();
         tabs();
-     /*   slickConfig();
-        productLightbox();*/
-        rating();
         backToTop();
         stickyHeader();
         filterSlider();
         mapConfig();
         modalInit();
         searchInit();
-        countDown();
         mainSlider();
         parallax();
         stickySidebar();
         accordion();
-        progressBar();
         customScrollbar();
         select2Cofig();
         dateTimePicker();
