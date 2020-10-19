@@ -31,16 +31,14 @@ Column Deal Hot
 
             <div
               *ngIf="productsAvailableStockPromotion.length > 0"
-              class="ps-carousel--deal-hot ps-carousel--deal-hot owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
+              class="ps-carousel--deal-hot ps-carousel--deal-hot owl-slider" data-owl-auto="true" data-owl-loop="true"
+              data-owl-speed="5000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="1"
+              data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1"
+              data-owl-duration="1000" data-owl-mousedrag="on">
 
               <!--=====================================
               Product Deal Home
               ======================================-->
-
-
-              <!--=====================================
-            Product Deal Home
-            ======================================-->
 
               <div
                 *ngFor="let product of productsAvailableStockPromotion; let isLastIndex = last"
@@ -59,14 +57,15 @@ Column Deal Hot
 
                           <div class="item" *ngFor="let image of product.gallery;let last = last">
                             <a href="{{_configService.path}}img/products/{{product.category}}/gallery/{{image}}">
-                              <img src="{{_configService.path}}img/products/{{product.category}}/gallery/{{image}}" alt="">
+                              <img src="{{_configService.path}}img/products/{{product.category}}/gallery/{{image}}"
+                                   alt="">
                             </a>
                           </div>
 
                         </div>
 
                         <div class="ps-product__badge">
-                          <span>Save <br> ${{((product.offer[0] === 'Disccount') ?   (product.price * product.offer[1]) / 100 : product.offer[1] - product.price  ) | number :'2.2'}}</span>
+                          <span>Save <br> ${{((product.offer[0] === 'Disccount') ? (product.price * product.offer[1]) / 100 : product.offer[1] - product.price) | number :'2.2'}}</span>
                         </div>
 
                       </div>
@@ -91,20 +90,24 @@ Column Deal Hot
 
                     <div class="ps-product__meta">
 
-                      <h4 class="ps-product__price sale">${{ ((product.offer[0] === 'Disccount') ?  product.price - ((product.price * product.offer[1]) / 100) : product.price - product.offer[1]) | number :'2.2'}} <del> ${{product.price}}</del></h4>
+                      <h4 class="ps-product__price sale">
+                        ${{ ((product.offer[0] === 'Disccount') ? product.price - ((product.price * product.offer[1]) / 100) : product.price - product.offer[1]) | number :'2.2'}}
+                        <del> ${{product.price}}</del>
+                      </h4>
 
                       <div class="ps-product__rating">
 
                         <select class="ps-rating" data-read-only="true">
 
 
-                          <option *ngFor="let value of [1,2,3,4,5]" [value]="(product.calculate_review >= value) ? 1 : 2">{{value}}</option>
+                          <option *ngFor="let value of [1,2,3,4,5]"
+                                  [value]="(product.calculate_review >= value) ? 1 : 2">{{value}}</option>
 
-                         <!-- <option value="1">1</option>
-                          <option value="1">2</option>
-                          <option value="1">3</option>
-                          <option value="1">4</option>
-                          <option value="2">5</option>-->
+                          <!-- <option value="1">1</option>
+                           <option value="1">2</option>
+                           <option value="1">3</option>
+                           <option value="1">4</option>
+                           <option value="2">5</option>-->
 
                         </select>
                         <span>({{product.reviews.length}} review)</span>
@@ -172,10 +175,9 @@ Column Deal Hot
       </div><!-- End Columns -->
 
       <!--=====================================
-Column Top 20 Best Seller
-======================================-->
-
-      <div class="col-xl-3 col-12 ">
+      Column Top 20 Best Seller
+      ======================================-->
+      <div class="col-xl-3 col-12">
 
         <aside class="widget widget_best-sale" data-mh="dealhot">
 
@@ -183,296 +185,52 @@ Column Top 20 Best Seller
 
           <div class="widget__content">
 
-            <div class="owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
 
-              <div class="ps-product-group">
+            <app-preload *ngIf="productsBestSeller.length === 0"></app-preload>
+
+            <div class="owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0"
+                 data-owl-nav="false" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1"
+                 data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on"
+                 *ngIf="productsBestSeller.length > 0">
+
+              <div class="ps-product-group"
+                   *ngFor="let groupProductsBestSeller of productsBestSeller;let lastIndexGroupProductBestSeller = last">
 
                 <!--=====================================
-Product
-======================================-->
+                 Product
+                 ======================================-->
 
-                <div class="ps-product--horizontal">
+                <div class="ps-product--horizontal"
+                     *ngFor="let productBestSeller of groupProductsBestSeller">
 
                   <div class="ps-product__thumbnail">
-                    <a href="product-default.html">
-                      <img src="{{_configService.path}}img/products/technology/1.jpg" alt="">
+                    <a [routerLink]="['product', productBestSeller.url]">
+                      <img
+                        src="{{_configService.path}}img/products/{{productBestSeller.category}}/{{productBestSeller.image}}"
+                        alt="">
                     </a>
                   </div>
 
                   <div class="ps-product__content">
 
-                    <a class="ps-product__title" href="product-default.html">Sound Intone I65 Earphone White Version</a>
+                    <a class="ps-product__title"
+                       [routerLink]="['product', productBestSeller.url]">{{productBestSeller.name}}</a>
 
-                    <div class="ps-product__rating">
+                    <p class="ps-product__price sale">
+                      ${{ ((productBestSeller.offer[0] === 'Disccount') ? productBestSeller.price - ((productBestSeller.price * productBestSeller.offer[1]) / 100) : productBestSeller.price - productBestSeller.offer[1]) | number :'2.2'}}
+                      <del> ${{productBestSeller.price}}</del>
 
-                      <select class="ps-rating" data-read-only="true">
-                        <option value="1">1</option>
-                        <option value="1">2</option>
-                        <option value="1">3</option>
-                        <option value="1">4</option>
-                        <option value="2">5</option>
-                      </select>
-
-                      <span>01</span>
-
-                    </div>
-
-                    <p class="ps-product__price">105.30</p>
+                    </p>
 
                   </div>
 
                 </div><!-- End Product -->
 
-                <!--=====================================
-Product
-======================================-->
 
-                <div class="ps-product--horizontal">
-
-                  <div class="ps-product__thumbnail">
-
-                    <a href="product-default.html">
-                      <img src="{{_configService.path}}img/products/technology/2.jpg" alt="">
-                    </a>
-
-                  </div>
-
-                  <div class="ps-product__content">
-
-                    <a class="ps-product__title" href="product-default.html">Beat Spill 2.0 Wireless Speaker – White</a>
-
-                    <div class="ps-product__rating">
-
-                      <select class="ps-rating" data-read-only="true">
-                        <option value="1">1</option>
-                        <option value="1">2</option>
-                        <option value="1">3</option>
-                        <option value="1">4</option>
-                        <option value="2">5</option>
-                      </select>
-                      <span>01</span>
-
-                    </div>
-
-                    <p class="ps-product__price">$125.00 <del>$135.00 </del></p>
-
-                  </div>
-
-                </div><!-- End Product -->
-
-                <!--=====================================
-Product
-======================================-->
-
-                <div class="ps-product--horizontal">
-
-                  <div class="ps-product__thumbnail">
-
-                    <a href="product-default.html">
-                      <img src="{{_configService.path}}img/products/technology/3.jpg" alt="">
-                    </a>
-
-                  </div>
-
-                  <div class="ps-product__content">
-
-                    <a class="ps-product__title" href="product-default.html">ASUS Chromebook Flip – 10.2 Inch</a>
-
-                    <div class="ps-product__rating">
-
-                      <select class="ps-rating" data-read-only="true">
-                        <option value="1">1</option>
-                        <option value="1">2</option>
-                        <option value="1">3</option>
-                        <option value="1">4</option>
-                        <option value="2">5</option>
-                      </select>
-                      <span>02</span>
-
-                    </div>
-
-                    <p class="ps-product__price sale">$990.00 <del>$1250.00 </del></p>
-
-                  </div>
-
-                </div><!-- End Product -->
-
-                <!--=====================================
-Product
-======================================-->
-
-                <div class="ps-product--horizontal">
-
-                  <div class="ps-product__thumbnail">
-                    <a href="product-default.html">
-                      <img src="{{_configService.path}}img/products/technology/4.jpg" alt="">
-                    </a>
-                  </div>
-
-                  <div class="ps-product__content">
-                    <a class="ps-product__title" href="product-default.html">Apple Macbook Retina Display 12”</a>
-
-                    <div class="ps-product__rating">
-
-                      <select class="ps-rating" data-read-only="true">
-                        <option value="1">1</option>
-                        <option value="1">2</option>
-                        <option value="1">3</option>
-                        <option value="1">4</option>
-                        <option value="2">5</option>
-                      </select>
-
-                      <span>04</span>
-
-                    </div>
-
-                    <p class="ps-product__price">$1090.00 <del>$1550.00 </del></p>
-
-                  </div>
-
-                </div><!-- End Product -->
+                {{lastIndexGroupProductBestSeller ? callbackTopBestSeller() : ''}}
 
               </div><!-- End Product Group -->
 
-              <div class="ps-product-group">
-
-                <!--=====================================
-Product
-======================================-->
-
-                <div class="ps-product--horizontal">
-
-                  <div class="ps-product__thumbnail">
-                    <a href="product-default.html"><img src="{{_configService.path}}img/products/technology/3.jpg" alt=""></a>
-                  </div>
-
-                  <div class="ps-product__content">
-
-                    <a class="ps-product__title" href="product-default.html">ASUS Chromebook Flip – 10.2 Inch</a>
-
-                    <div class="ps-product__rating">
-
-                      <select class="ps-rating" data-read-only="true">
-                        <option value="1">1</option>
-                        <option value="1">2</option>
-                        <option value="1">3</option>
-                        <option value="1">4</option>
-                        <option value="2">5</option>
-                      </select>
-
-                      <span>02</span>
-
-                    </div>
-
-                    <p class="ps-product__price sale">$990.00 <del>$1250.00 </del></p>
-
-                  </div>
-
-                </div><!-- End Product -->
-
-                <!--=====================================
-Product
-======================================-->
-
-                <div class="ps-product--horizontal">
-
-                  <div class="ps-product__thumbnail">
-
-                    <a href="product-default.html">
-                      <img src="{{_configService.path}}img/products/technology/4.jpg" alt="">
-                    </a>
-
-                  </div>
-
-                  <div class="ps-product__content">
-
-                    <a class="ps-product__title" href="product-default.html">Apple Macbook Retina Display 12”</a>
-
-                    <div class="ps-product__rating">
-
-                      <select class="ps-rating" data-read-only="true">
-                        <option value="1">1</option>
-                        <option value="1">2</option>
-                        <option value="1">3</option>
-                        <option value="1">4</option>
-                        <option value="2">5</option>
-                      </select>
-
-                      <span>04</span>
-                    </div>
-
-                    <p class="ps-product__price">$1090.00 <del>$1550.00 </del></p>
-
-                  </div>
-
-                </div><!-- End Product -->
-
-                <!--=====================================
-Product
-======================================-->
-
-                <div class="ps-product--horizontal">
-
-                  <div class="ps-product__thumbnail">
-
-                    <a href="product-default.html">
-                      <img src="{{_configService.path}}img/products/technology/5.jpg" alt="">
-                    </a>
-
-                  </div>
-
-                  <div class="ps-product__content">
-                    <a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
-
-                    <div class="ps-product__rating">
-                      <select class="ps-rating" data-read-only="true">
-                        <option value="1">1</option>
-                        <option value="1">2</option>
-                        <option value="1">3</option>
-                        <option value="1">4</option>
-                        <option value="2">5</option>
-                      </select>
-                      <span>01</span>
-                    </div>
-
-                    <p class="ps-product__price">$85.00</p>
-
-                  </div>
-
-                </div><!-- End Product -->
-
-                <!--=====================================
-Product
-======================================-->
-
-                <div class="ps-product--horizontal">
-
-                  <div class="ps-product__thumbnail">
-                    <a href="product-default.html">
-                      <img src="{{_configService.path}}img/products/technology/6.jpg" alt="">
-                    </a>
-                  </div>
-
-                  <div class="ps-product__content">
-                    <a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 64GB</a>
-
-                    <div class="ps-product__rating">
-                      <select class="ps-rating" data-read-only="true">
-                        <option value="1">1</option>
-                        <option value="1">2</option>
-                        <option value="1">3</option>
-                        <option value="1">4</option>
-                        <option value="2">5</option>
-                      </select><span>01</span>
-                    </div>
-
-                    <p class="ps-product__price">$950.60</p>
-
-                  </div>
-
-                </div><!-- End Product -->
-
-              </div><!-- End Product Group -->
 
             </div>
 

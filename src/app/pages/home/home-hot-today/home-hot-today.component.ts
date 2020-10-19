@@ -17,6 +17,7 @@ export class HomeHotTodayComponent implements OnInit {
   productsInfo: Array<any>;
   productsBestSeller: Array<any>;
   render: boolean;
+  renderBestSeller: boolean;
   preload: boolean;
 
   constructor(public _configService: ConfigService,
@@ -26,6 +27,7 @@ export class HomeHotTodayComponent implements OnInit {
     this.productsInfo = [];
     this.productsBestSeller = [];
     this.render = true;
+    this.renderBestSeller = true;
     this.preload = false;
   }
 
@@ -90,13 +92,21 @@ export class HomeHotTodayComponent implements OnInit {
         });
 
         this.preload = false;
-        console.log('this.productsAvailableStockPromotion', this.productsAvailableStockPromotion);
 
         // Obteniendo los poructos vendidos
         this.getSales();
 
       }
     );
+  }
+
+  callbackTopBestSeller() {
+    if (this.renderBestSeller) {
+      this.renderBestSeller = false;
+      owlCarouselConfig();
+      carouselNavigation();
+      rating();
+    }
   }
 
   getSales() {
@@ -116,13 +126,25 @@ export class HomeHotTodayComponent implements OnInit {
         });
 
 
-        // Asiendo el buscado sobre el arreglo de products, y pusehando en el arreglo global productsSales
+        // Haciendo el buscado sobre el arreglo de products, y pusehando en el arreglo  productsFilteredToBestSeller
+        const productsFilteredToBestSeller = [];
         unicProductsSales.forEach((productSale) => {
-          this.productsBestSeller.push(this.productsInfo.find((productInfo) => {
+          productsFilteredToBestSeller.push(this.productsInfo.find((productInfo) => {
             return productSale.product === productInfo.name;
           }));
         });
 
+
+        // El modal solo permite agrupaciones de 4 productos, por tal razon se deben agrupar
+        const longitudSlideBestSeller = 4;
+        for (let i = 0; i < productsFilteredToBestSeller.length; i += longitudSlideBestSeller) {
+          const productsCortados = productsFilteredToBestSeller.slice(i, i + longitudSlideBestSeller);
+          this.productsBestSeller.push(productsCortados);
+        }
+        console.log('this.productsBestSeller', this.productsBestSeller);
+
+
+        // this.productsBestSeller;
       }
     );
   }
