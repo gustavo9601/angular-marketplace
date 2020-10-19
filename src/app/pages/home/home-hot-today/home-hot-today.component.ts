@@ -68,11 +68,12 @@ export class HomeHotTodayComponent implements OnInit {
     this.preload = true;
     this._productService.getData().subscribe(
       (response) => {
-        // Recorrer los productos para obtener solo los que tienen ofertas y tienen stock
+
         const products = Object.values(response);
         // Variable que se usara para hacer el match con los products bes seller
         this.productsInfo = products;
 
+        // Recorrer los productos para obtener solo los que tienen ofertas y tienen stock
         // Parseando en el arreglo el indice offer a array
         products.map((product: any) => {
           product.offer = JSON.parse(product.offer);
@@ -141,10 +142,7 @@ export class HomeHotTodayComponent implements OnInit {
           const productsCortados = productsFilteredToBestSeller.slice(i, i + longitudSlideBestSeller);
           this.productsBestSeller.push(productsCortados);
         }
-        console.log('this.productsBestSeller', this.productsBestSeller);
 
-
-        // this.productsBestSeller;
       }
     );
   }

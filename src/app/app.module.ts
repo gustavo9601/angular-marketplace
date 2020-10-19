@@ -19,6 +19,8 @@ import { PreloadComponent } from './shared/preload/preload.component';
 import { HomeFeaturesComponent } from './pages/home/home-features/home-features.component';
 import { HomePromotionsComponent } from './pages/home/home-promotions/home-promotions.component';
 import { HomeHotTodayComponent } from './pages/home/home-hot-today/home-hot-today.component';
+import { HomeTopCategoriesComponent } from './pages/home-top-categories/home-top-categories.component';
+import { HomeShowCaseComponent } from './pages/home/home-show-case/home-show-case.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { HomeHotTodayComponent } from './pages/home/home-hot-today/home-hot-toda
     HomeFeaturesComponent,
     HomePromotionsComponent,
     HomeHotTodayComponent,
+    HomeTopCategoriesComponent,
+    HomeShowCaseComponent,
   ],
   imports: [
     BrowserModule,

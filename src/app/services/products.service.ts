@@ -23,4 +23,8 @@ export class ProductsService {
     return this.http.get(this.api + 'products.json?orderBy="title_list"&startAt="1"&limitToFirst=3&print="pretty"');
   }
 
+  getFilterAndLimitDate(urlCategory: string, limit: number) {
+    return this.http.get(this.api + 'products.json?orderBy="category"&equalTo="' + urlCategory + '"&print=pretty&limitToFirst=' + limit);
+  }
+
 }

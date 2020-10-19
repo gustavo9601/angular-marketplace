@@ -1,0 +1,131 @@
+<!--=====================================
+Section Gray
+======================================-->
+
+<div class="ps-section--gray">
+
+  <app-preload *ngIf="categoriesTop.length == 0 && loading"></app-preload>
+
+  <div class="container" *ngIf="categoriesTop.length > 0 && !loading">
+
+    <!--=====================================
+    Products of category
+    ======================================-->
+
+    <div class="ps-block--products-of-category" *ngFor="let category of categoriesTop">
+
+      <!--=====================================
+Menu subcategory
+======================================-->
+
+      <div class="ps-block__categories">
+
+        <h3>{{category.name}}</h3>
+
+        <ul>
+          <li *ngFor="let subcategory of category.subcategories">
+            <a [routerLink]="['products', subcategory.url]">{{subcategory.name}}</a>
+          </li>
+        </ul>
+
+        <a class="ps-block__more-link" [routerLink]="['products', category.url]">View All</a>
+
+      </div>
+
+      <!--=====================================
+      Vertical Slider Category
+      ======================================-->
+
+      <div class="ps-block__slider">
+
+        <div class="ps-carousel--product-box owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000"
+             data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1"
+             data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="500"
+             data-owl-mousedrag="off">
+
+          <a [routerLink]="['products', productCategory.url]" *ngFor="let productCategory of category.products;let lastVertical = last">
+            <img
+              src="{{_configService.path}}img/products/{{productCategory.category}}/vertical/{{productCategory.vertical_slider}}" alt="">
+
+            {{(lastVertical) ? callbackSlideVertical() : ''}}
+          </a>
+
+        </div>
+
+      </div>
+
+      <!--=====================================
+      Block Product Box
+      ======================================-->
+
+      <div class="ps-block__product-box">
+
+        <!--=====================================
+        Product Simple
+        ======================================-->
+
+        <div class="ps-product ps-product--simple" *ngFor="let productCategory of category.products">
+
+          <div class="ps-product__thumbnail">
+
+            <a [routerLink]="['products', productCategory.url]">
+
+              <img src="{{_configService.path}}img/products/{{productCategory.category}}/1.jpg" alt="">
+
+            </a>
+
+
+            <div class="ps-product__badge out-stock" *ngIf="productCategory.stock === 0">Out of Stock</div>
+            <div *ngIf="productCategory.stock > 0"
+              class="ps-product__badge">{{(productCategory.offer[0] === 'Disccount') ? ('-' + productCategory.offer[1] + '%') : ''}}</div>
+
+          </div>
+
+          <div class="ps-product__container">
+
+            <div class="ps-product__content" data-mh="clothing">
+
+              <a class="ps-product__title" [routerLink]="['products', productCategory.url]">{{productCategory.name}}
+                r</a>
+
+              <div class="ps-product__rating">
+
+                <select class="ps-rating" data-read-only="true">
+
+
+                  <option *ngFor="let value of [1,2,3,4,5]"
+                          [value]="(productCategory.calculate_review >= value) ? 1 : 2">{{value}}</option>
+
+                  <!-- <option value="1">1</option>
+                   <option value="1">2</option>
+                   <option value="1">3</option>
+                   <option value="1">4</option>
+                   <option value="2">5</option>-->
+
+                </select>
+                <span>({{productCategory.reviews.length}} review)</span>
+
+              </div>
+
+              <p class="ps-product__price sale">
+                ${{ ((productCategory.offer[0] === 'Disccount') ? productCategory.price - ((productCategory.price * productCategory.offer[1]) / 100) : productCategory.price - productCategory.offer[1]) | number :'2.2'}}
+                <del> ${{productCategory.price}}</del>
+
+            </div>
+
+          </div>
+
+        </div> <!-- End Product Simple -->
+
+
+      </div><!-- End Block Product Box -->
+
+
+
+
+    </div><!-- End Products of category -->
+
+
+  </div><!-- End Container-->
+
+</div><!-- End Section Gray-->

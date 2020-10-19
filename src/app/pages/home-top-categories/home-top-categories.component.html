@@ -1,0 +1,26 @@
+<!--=====================================
+ Top Categoríes
+ ======================================-->
+
+<div class="ps-top-categories">
+
+  <div class="container">
+
+    <h3>Top categories of the month</h3>
+
+    <app-preload *ngIf="loading"></app-preload>
+
+    <div class="row" *ngIf="categoriesTop.length > 0 && !loading">
+
+      <div class="col-xl-2 col-lg-3 col-sm-4 col-6" *ngFor="let category of categoriesTop">
+        <div class="ps-block--category">
+          <a class="ps-block__overlay" [routerLink]="['products', category.url]"></a>
+          <img src="{{_configService.path}}img/categories/{{category.image}}" alt="">
+          <p>{{category.name}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- End Top Categories -->
