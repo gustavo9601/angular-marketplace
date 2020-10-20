@@ -29,6 +29,7 @@ import { LightBoxDirective } from './directives/light-box.directive';
 import { CountDownDirective } from './directives/count-down.directive';
 import { RatingDirective } from './directives/rating.directive';
 import { ProgressBarDirective } from './directives/progress-bar.directive';
+import { ProductsRecommendedComponent } from './pages/products/products-recommended/products-recommended.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { ProgressBarDirective } from './directives/progress-bar.directive';
     CountDownDirective,
     RatingDirective,
     ProgressBarDirective,
+    ProductsRecommendedComponent,
   ],
   imports: [
     BrowserModule,
