@@ -23,7 +23,7 @@ export class OwlCarouselDirective implements OnInit{
     if (this.appOwlCarousel){
       // Activara el slide para la clase
       owlCarouselConfig('.' + this.classOwlCarousel);
-      carouselNavigation('.' + this.classOwlCarousel);
+      carouselNavigation();
     }
   }
 

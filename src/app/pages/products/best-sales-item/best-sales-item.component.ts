@@ -39,6 +39,7 @@ export class BestSalesItemComponent implements OnInit {
         const productsCategory = Object.values(responseFiltered);
         // Si retorna datos
         if (productsCategory.length > 0) {
+
           this.products = this.mapProducts(this.sliceProducts(this.orderPorductsBySales(productsCategory)));
           console.log(' this.products', this.products);
           this.loading = false;
@@ -50,8 +51,9 @@ export class BestSalesItemComponent implements OnInit {
 
               const productsSubCategory = Object.values(responseSubcategoryFiltered);
               if (productsSubCategory.length > 0) {
+
                 this.products = this.mapProducts(this.sliceProducts(this.orderPorductsBySales(productsSubCategory)));
-                console.log(' this.products', this.products);
+
               }
               this.loading = false;
             }
@@ -86,21 +88,16 @@ export class BestSalesItemComponent implements OnInit {
   }
 
   mapProducts(products: Array<any>): Array<any> {
-
-    console.log("products before", products);
-    const productedita = products.map((product: any) => {
+    const formatProducts = products;
+    formatProducts.map((product: any) => {
       product.offer = JSON.parse(product.offer);
       product.offer[1] = Number(product.offer[1]);
       product.gallery = JSON.parse(product.gallery);
       product.reviews = JSON.parse(product.reviews);
-
       product.calculate_review = this.calculateReview(product.reviews);
-
       product.offer[2] = new Date(Date.parse(product.offer[2]));  // parseando el string a un tipo fecha
     });
-
-
-    return productedita;
+    return formatProducts;
   }
 
 }

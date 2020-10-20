@@ -122,7 +122,10 @@ Column Deal Hot
 
                       <div class="ps-product__specification">
 
-                        <p>Status:<strong class="in-stock"> In Stock</strong></p>
+                        <p>Status:
+                          <strong class="in-stock" *ngIf="product.stock > 0"> In Stock</strong>
+                          <strong class="out-stock" *ngIf="product.stock === 0"> Out Stock</strong>
+                        </p>
 
                       </div>
 

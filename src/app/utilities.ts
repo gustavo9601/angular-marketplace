@@ -72,8 +72,8 @@ export function owlCarouselConfig(nameSlider: string = '.owl-slider') {
 }
 
 
-export function carouselNavigation(nameSlider: string = '.owl-slider') {
-  var prevBtn = $(nameSlider + '.ps-carousel__prev'),
+export function carouselNavigation() {
+  var prevBtn = $('.ps-carousel__prev'),
     nextBtn = $('.ps-carousel__next');
   prevBtn.on('click', function(e) {
     e.preventDefault();
