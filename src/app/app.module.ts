@@ -21,6 +21,7 @@ import { HomePromotionsComponent } from './pages/home/home-promotions/home-promo
 import { HomeHotTodayComponent } from './pages/home/home-hot-today/home-hot-today.component';
 import { HomeTopCategoriesComponent } from './pages/home-top-categories/home-top-categories.component';
 import { HomeShowCaseComponent } from './pages/home/home-show-case/home-show-case.component';
+import { OwlCarouselDirective } from './directives/owl-carousel.directive';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { HomeShowCaseComponent } from './pages/home/home-show-case/home-show-cas
     HomeHotTodayComponent,
     HomeTopCategoriesComponent,
     HomeShowCaseComponent,
+    OwlCarouselDirective,
   ],
   imports: [
     BrowserModule,

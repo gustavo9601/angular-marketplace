@@ -2,8 +2,8 @@ declare var $: any;
 declare var jQuery: any;
 
 
-export function owlCarouselConfig() {
-  var target = $('.owl-slider');
+export function owlCarouselConfig(nameSlider: string = '.owl-slider') {
+  var target = $(nameSlider);
   if (target.length > 0) {
     target.each(function() {
       var el = $(this),
@@ -72,6 +72,22 @@ export function owlCarouselConfig() {
 }
 
 
+export function carouselNavigation(nameSlider: string = '') {
+  var prevBtn = $(nameSlider + '.ps-carousel__prev'),
+    nextBtn = $('.ps-carousel__next');
+  prevBtn.on('click', function(e) {
+    e.preventDefault();
+    var target = $(this).attr('href');
+    $(target).trigger('prev.owl.carousel', [1000]);
+  });
+  nextBtn.on('click', function(e) {
+    e.preventDefault();
+    var target = $(this).attr('href');
+    $(target).trigger('next.owl.carousel', [1000]);
+  });
+}
+
+
 export function backgroundImage() {
   var databackground = $('[data-background]');
   databackground.each(function() {
@@ -85,20 +101,6 @@ export function backgroundImage() {
 }
 
 
-export function carouselNavigation() {
-  var prevBtn = $('.ps-carousel__prev'),
-    nextBtn = $('.ps-carousel__next');
-  prevBtn.on('click', function(e) {
-    e.preventDefault();
-    var target = $(this).attr('href');
-    $(target).trigger('prev.owl.carousel', [1000]);
-  });
-  nextBtn.on('click', function(e) {
-    e.preventDefault();
-    var target = $(this).attr('href');
-    $(target).trigger('next.owl.carousel', [1000]);
-  });
-}
 
 
 export function productLightbox() {

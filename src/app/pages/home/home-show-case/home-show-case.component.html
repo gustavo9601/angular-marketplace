@@ -12,7 +12,7 @@ Section Gray
     Products of category
     ======================================-->
 
-    <div class="ps-block--products-of-category" *ngFor="let category of categoriesTop">
+    <div class="ps-block--products-of-category" *ngFor="let category of categoriesTop;let index = index">
 
       <!--=====================================
 Menu subcategory
@@ -38,16 +38,18 @@ Menu subcategory
 
       <div class="ps-block__slider">
 
-        <div class="ps-carousel--product-box owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000"
+        <div class="ps-carousel--product-box owl-slider-{{index}}" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000"
              data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1"
              data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="500"
              data-owl-mousedrag="off">
 
-          <a [routerLink]="['products', productCategory.url]" *ngFor="let productCategory of category.products;let lastVertical = last">
+          <a [routerLink]="['products', productCategory.url]"
+             *ngFor="let productCategory of category.products;let lastVertical = last"
+             [appOwlCarousel]="lastVertical" classOwlCarousel="owl-slider-{{index}}">
             <img
               src="{{_configService.path}}img/products/{{productCategory.category}}/vertical/{{productCategory.vertical_slider}}" alt="">
 
-            {{(lastVertical) ? callbackSlideVertical() : ''}}
+         <!--   {{(lastVertical) ? callbackSlideVertical() : ''}}-->
           </a>
 
         </div>
