@@ -31,7 +31,7 @@ Column Deal Hot
 
             <div
               *ngIf="productsAvailableStockPromotion.length > 0"
-              class="ps-carousel--deal-hot ps-carousel--deal-hot owl-slider" data-owl-auto="true" data-owl-loop="true"
+              class="ps-carousel--deal-hot ps-carousel--deal-hot owl-slider-promotion" data-owl-auto="true" data-owl-loop="true"
               data-owl-speed="5000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="1"
               data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1"
               data-owl-duration="1000" data-owl-mousedrag="on">
@@ -41,7 +41,13 @@ Column Deal Hot
               ======================================-->
 
               <div
-                *ngFor="let product of productsAvailableStockPromotion; let isLastIndex = last"
+                *ngFor="let product of productsAvailableStockPromotion;let index = index; let isLastIndex = last"
+                [appOwlCarousel]="isLastIndex"  classOwlCarousel="owl-slider-promotion"
+                [appSlick]="isLastIndex" classSlick="ps-product--detail"
+                [appLightBox]="isLastIndex" classLightBox="ps-product--detail"
+                [appCountDown]="isLastIndex" classCountDown="ps-countdown"
+                [appRating]="isLastIndex" classRating="ps-rating"
+                [appProgressBar]="isLastIndex" classProgressBar="ps-progress"
                 class="ps-product--detail ps-product--hot-deal">
 
                 <div class="ps-product__header">
@@ -162,7 +168,7 @@ Column Deal Hot
 
                 </div>
 
-                {{isLastIndex ? callback() : ''}}
+              <!--  {{isLastIndex ? callback() : ''}}-->
 
               </div><!-- End Product Deal Hot -->
 
@@ -188,12 +194,14 @@ Column Deal Hot
 
             <app-preload *ngIf="productsBestSeller.length === 0"></app-preload>
 
-            <div class="owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0"
+            <div class="owl-slider-best-seller" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0"
                  data-owl-nav="false" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1"
                  data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on"
                  *ngIf="productsBestSeller.length > 0">
 
               <div class="ps-product-group"
+                   [appOwlCarousel]="lastIndexGroupProductBestSeller"  classOwlCarousel="owl-slider-best-seller"
+                   [appRating]="lastIndexGroupProductBestSeller" classRating="ps-rating"
                    *ngFor="let groupProductsBestSeller of productsBestSeller;let lastIndexGroupProductBestSeller = last">
 
                 <!--=====================================
@@ -227,7 +235,7 @@ Column Deal Hot
                 </div><!-- End Product -->
 
 
-                {{lastIndexGroupProductBestSeller ? callbackTopBestSeller() : ''}}
+                <!--{{lastIndexGroupProductBestSeller ? callbackTopBestSeller() : ''}}-->
 
               </div><!-- End Product Group -->
 

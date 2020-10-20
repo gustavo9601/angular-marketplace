@@ -1,7 +1,7 @@
 <div class="ps-home-banner"
      *ngIf="!preload"
 >
-  <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000"
+  <div class="ps-carousel--nav-inside owl-slider-banner" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000"
        data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1"
        data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on"
        data-owl-animate-in="fadeIn" data-owl-animate-out="fadeOut">
@@ -10,6 +10,7 @@
     <div class="ps-banner--market-4"
          [attr.data-background]="_configService.path + 'img/products/' +slide['category'] +'/horizontal/' + slide['horizontal_slider']['IMG tag']"
          *ngFor="let slide of banner_home;let isLastIndex = last"
+         [appOwlCarousel]="isLastIndex" classOwlCarousel="owl-slider-banner"
          src="{{_configService.path}}img/products/{{slide['category']}}/horizontal/{{slide['horizontal_slider']['IMG tag']}}">
       <img
         src="{{_configService.path}}img/products/{{slide['category']}}/horizontal/{{slide['horizontal_slider']['IMG tag']}}"
@@ -22,9 +23,6 @@
         </h3>
         <a class="ps-btn" [routerLink]="['/product', slide['url']]">{{slide['horizontal_slider']["Button tag"]}}</a>
       </div>
-
-      <!--Pregunta si es el ulitmo indice, ejecute el callback, en caso contrario que no haga nada-->
-      {{isLastIndex ? callBack() : ''}}
     </div>
 
 

@@ -17,4 +17,9 @@ export class CategoriesService {
   getData() {
     return this.http.get(this.api + 'categories.json');
   }
+
+
+  getFilterData(orderBy, equalTo) {
+    return this.http.get(this.api + 'categories.json?orderBy="' + orderBy + '"&equalTo="' + equalTo + '"');
+  }
 }

@@ -22,6 +22,13 @@ import { HomeHotTodayComponent } from './pages/home/home-hot-today/home-hot-toda
 import { HomeTopCategoriesComponent } from './pages/home-top-categories/home-top-categories.component';
 import { HomeShowCaseComponent } from './pages/home/home-show-case/home-show-case.component';
 import { OwlCarouselDirective } from './directives/owl-carousel.directive';
+import { ProductsBreadcrumbComponent } from './pages/products/products-breadcrumb/products-breadcrumb.component';
+import { BestSalesItemComponent } from './pages/products/best-sales-item/best-sales-item.component';
+import { SlickDirective } from './directives/slick.directive';
+import { LightBoxDirective } from './directives/light-box.directive';
+import { CountDownDirective } from './directives/count-down.directive';
+import { RatingDirective } from './directives/rating.directive';
+import { ProgressBarDirective } from './directives/progress-bar.directive';
 
 
 @NgModule({
@@ -45,6 +52,13 @@ import { OwlCarouselDirective } from './directives/owl-carousel.directive';
     HomeTopCategoriesComponent,
     HomeShowCaseComponent,
     OwlCarouselDirective,
+    ProductsBreadcrumbComponent,
+    BestSalesItemComponent,
+    SlickDirective,
+    LightBoxDirective,
+    CountDownDirective,
+    RatingDirective,
+    ProgressBarDirective,
   ],
   imports: [
     BrowserModule,

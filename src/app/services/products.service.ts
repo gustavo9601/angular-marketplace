@@ -27,4 +27,8 @@ export class ProductsService {
     return this.http.get(this.api + 'products.json?orderBy="category"&equalTo="' + urlCategory + '"&print=pretty&limitToFirst=' + limit);
   }
 
+  getFilterData(orderBy, equalTo) {
+    return this.http.get(this.api + 'products.json?orderBy="' + orderBy + '"&equalTo="' + equalTo + '"');
+  }
+
 }

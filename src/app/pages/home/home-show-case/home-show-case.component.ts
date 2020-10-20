@@ -67,7 +67,7 @@ export class HomeShowCaseComponent implements OnInit {
 
 
         this.categoriesTop = categories;
-        console.log('this.categoriesTop', this.categoriesTop);
+
 
         this.loading = false;
       }

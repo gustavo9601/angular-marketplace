@@ -15,10 +15,10 @@ export class OwlCarouselDirective implements OnInit{
   }
 
   ngOnInit(): void {
-    this.setUpOwlCarousel();
+    this.setUp();
   }
 
-  setUpOwlCarousel(){
+  setUp(){
     // Si es el ulitmo en iterar
     if (this.appOwlCarousel){
       // Activara el slide para la clase

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ConfigService} from '../../../services/config.service';
 import {ProductsService} from '../../../services/products.service';
-import {owlCarouselConfig, backgroundImage} from '../../../utilities';
 
 @Component({
   selector: 'app-home-banner',
@@ -11,7 +10,6 @@ import {owlCarouselConfig, backgroundImage} from '../../../utilities';
 export class HomeBannerComponent implements OnInit {
 
   banner_home: Array<any>;
-  render: boolean;
   preload:boolean;
 
 
@@ -19,7 +17,6 @@ export class HomeBannerComponent implements OnInit {
               private _productService: ProductsService) {
 
     this.banner_home = [];
-    this.render = true;
     this.preload = false;
   }
 
@@ -59,15 +56,6 @@ export class HomeBannerComponent implements OnInit {
 
   }
 
-  callBack() {
-    if (this.render) {
-      // Se cambia de estado para que no se siga iterando la logica
-      this.render = false;
 
-      // Activando de nuevo el carusel
-      owlCarouselConfig();
-      backgroundImage();
-    }
-  }
 
 }

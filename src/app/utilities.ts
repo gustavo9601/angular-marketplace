@@ -25,7 +25,7 @@ export function owlCarouselConfig(nameSlider: string = '.owl-slider') {
         dataNavRight = (el.data('owl-nav-right')) ? el.data('owl-nav-right') : '<i class=\'icon-chevron-right\'></i>',
         duration = el.data('owl-duration'),
         datamouseDrag = (el.data('owl-mousedrag') == 'on') ? true : false;
-      if (target.children('div, span, a, img, h1, h2, h3, h4, h5, h5').length >= 2) {
+      if (target.children('div, span, a, img, h1, h2, h3, h4, h5, h5').length >= 1) {
         el.owlCarousel({
           animateIn: dataAnimateIn,
           animateOut: dataAnimateOut,
@@ -72,7 +72,7 @@ export function owlCarouselConfig(nameSlider: string = '.owl-slider') {
 }
 
 
-export function carouselNavigation(nameSlider: string = '') {
+export function carouselNavigation(nameSlider: string = '.owl-slider') {
   var prevBtn = $(nameSlider + '.ps-carousel__prev'),
     nextBtn = $('.ps-carousel__next');
   prevBtn.on('click', function(e) {
@@ -101,10 +101,8 @@ export function backgroundImage() {
 }
 
 
-
-
-export function productLightbox() {
-  var product = $('.ps-product--detail');
+export function productLightbox(nameProduct: string = '.ps-product--detail') {
+  var product = $(nameProduct);
   if (product.length > 0) {
     $('.ps-product__gallery').lightGallery({
       selector: '.item a',
@@ -146,8 +144,8 @@ export function productLightbox() {
   });
 }
 
-export function slickConfig() {
-  var product = $('.ps-product--detail');
+export function slickConfig(productClass: string = '.ps-product--detail') {
+  var product = $(productClass);
   if (product.length > 0) {
     var primary = product.find('.ps-product__gallery'),
       second = product.find('.ps-product__variants'),
@@ -209,8 +207,8 @@ export function slickConfig() {
 }
 
 
-export function countDown() {
-  var time = $('.ps-countdown');
+export function countDown(nameCountdown: string = '.ps-countdown') {
+  var time = $(nameCountdown);
   time.each(function() {
     var el = $(this),
       value = $(this).data('time');
@@ -235,8 +233,8 @@ export function countDown() {
 }
 
 
-export function rating() {
-  $('select.ps-rating').each(function() {
+export function rating(select: string = '.ps-rating') {
+  $('select' + select).each(function() {
     var readOnly;
     if ($(this).attr('data-read-only') == 'true') {
       readOnly = true;
@@ -252,8 +250,8 @@ export function rating() {
 }
 
 
-export function progressBar() {
-  var progress = $('.ps-progress');
+export function progressBar(progressClass: string = '.ps-progress') {
+  var progress = $(progressClass);
   progress.each(function(e) {
     var value = $(this).data('value');
     $(this).find('span').css({

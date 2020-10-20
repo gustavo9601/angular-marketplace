@@ -16,8 +16,6 @@ export class HomeHotTodayComponent implements OnInit {
   productsAvailableStockPromotion: Array<any>;
   productsInfo: Array<any>;
   productsBestSeller: Array<any>;
-  render: boolean;
-  renderBestSeller: boolean;
   preload: boolean;
 
   constructor(public _configService: ConfigService,
@@ -26,8 +24,6 @@ export class HomeHotTodayComponent implements OnInit {
     this.productsAvailableStockPromotion = [];
     this.productsInfo = [];
     this.productsBestSeller = [];
-    this.render = true;
-    this.renderBestSeller = true;
     this.preload = false;
   }
 
@@ -46,21 +42,6 @@ export class HomeHotTodayComponent implements OnInit {
     return Math.round(sum / reviews.length);
   }
 
-
-  /*Callback quye se ejecutara una ves termine de rendirazar en el vista*/
-  callback() {
-    // console.log("Entro a callback")
-    if (this.render) {
-      this.render = false;
-      owlCarouselConfig();
-      carouselNavigation();
-      slickConfig();
-      productLightbox();
-      countDown();
-      rating();
-      progressBar();
-    }
-  }
 
   getProductsBanners() {
 
@@ -101,14 +82,6 @@ export class HomeHotTodayComponent implements OnInit {
     );
   }
 
-  callbackTopBestSeller() {
-    if (this.renderBestSeller) {
-      this.renderBestSeller = false;
-      owlCarouselConfig();
-      carouselNavigation();
-      rating();
-    }
-  }
 
   getSales() {
     this._salesService.getData().subscribe(
