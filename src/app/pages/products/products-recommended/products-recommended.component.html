@@ -88,12 +88,6 @@
                 <option *ngFor="let value of [1,2,3,4,5]"
                         [value]="(product.calculate_review >= value) ? 1 : 2">{{value}}</option>
 
-                <!-- <option value="1">1</option>
-                 <option value="1">2</option>
-                 <option value="1">3</option>
-                 <option value="1">4</option>
-                 <option value="2">5</option>-->
-
               </select>
               <span>({{product.reviews.length}} review)</span>
 

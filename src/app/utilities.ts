@@ -259,3 +259,51 @@ export function progressBar(progressClass: string = '.ps-progress') {
     });
   });
 }
+
+
+export function pagination(paginationClass:string = '.pagination'){
+  var target = $(paginationClass);
+
+  if (target.length > 0) {
+
+    target.each(function() {
+
+      var tg = $(this),
+        totalPages = tg.data('total-pages'),
+        actualPage = tg.data('actual-page'),
+        currentRoute = tg.data('current-route');
+
+      tg.twbsPagination({
+        totalPages: totalPages,
+        startPage: actualPage,
+        visiblePages: 4,
+        first: "First",
+        last: "Last",
+        prev: '<i class="fas fa-angle-left"></i>',
+        next: '<i class="fas fa-angle-right"></i>'
+      }).on("page", function(evt, page){
+        window.location.href = currentRoute+"&"+page;
+      })
+    })
+  }
+}
+
+
+export function tabs(tabClass:string = '.ps-tab-list') {
+  $(tabClass + '  li > a ').on('click', function(e) {
+    e.preventDefault();
+    var target = $(this).attr('href');
+    $(this).closest('li').siblings('li').removeClass('active');
+    $(this).closest('li').addClass('active');
+    $(target).addClass('active');
+    $(target).siblings('.ps-tab').removeClass('active');
+  });
+  $('.ps-tab-list.owl-slider .owl-item a').on('click', function(e) {
+    e.preventDefault();
+    var target = $(this).attr('href');
+    $(this).closest('.owl-item').siblings('.owl-item').removeClass('active');
+    $(this).closest('.owl-item').addClass('active');
+    $(target).addClass('active');
+    $(target).siblings('.ps-tab').removeClass('active');
+  });
+}

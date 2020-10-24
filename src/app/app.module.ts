@@ -30,6 +30,10 @@ import { CountDownDirective } from './directives/count-down.directive';
 import { RatingDirective } from './directives/rating.directive';
 import { ProgressBarDirective } from './directives/progress-bar.directive';
 import { ProductsRecommendedComponent } from './pages/products/products-recommended/products-recommended.component';
+import { ProductsShowCaseComponent } from './pages/products/products-show-case/products-show-case.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {FormsModule} from '@angular/forms';
+import { TabsDirective } from './directives/tabs.directive';
 
 
 @NgModule({
@@ -61,11 +65,15 @@ import { ProductsRecommendedComponent } from './pages/products/products-recommen
     RatingDirective,
     ProgressBarDirective,
     ProductsRecommendedComponent,
+    ProductsShowCaseComponent,
+    TabsDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
