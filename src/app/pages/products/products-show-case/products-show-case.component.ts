@@ -13,7 +13,7 @@ export class ProductsShowCaseComponent implements OnInit {
   products: Array<any>;
   loading: boolean;
   order: string;
-  paramUrl: Object;
+  paramUrl: any;
 
   optionsOrderSelect: Array<any>;
 

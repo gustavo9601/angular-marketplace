@@ -10,18 +10,20 @@ Shoping Header
 
     <div class="ps-shopping__actions">
 
-      <select class="form-control"
-              #selectOrderProducts
-              (change)="orderProductsSelect(selectOrderProducts.value)"
-              data-placeholder="Sort Items">
+      <div class="">
+        <select class="form-control"
+                #selectOrderProducts
+                (change)="orderProductsSelect(selectOrderProducts.value)"
+                data-placeholder="Sort Items">
 
-        <option *ngFor="let option of optionsOrderSelect"
-                [value]="option.value"
-                [selected]="option.value === order"
-                >{{option.text}}</option>
+          <option *ngFor="let option of optionsOrderSelect"
+                  [value]="option.value"
+                  [selected]="option.value === order"
+          >{{option.text}}</option>
 
 
-      </select>
+        </select>
+      </div>
 
       <div class="ps-shopping__view">
 
