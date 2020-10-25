@@ -261,7 +261,7 @@ export function progressBar(progressClass: string = '.ps-progress') {
 }
 
 
-export function pagination(paginationClass:string = '.pagination'){
+export function pagination(paginationClass: string = '.pagination') {
   var target = $(paginationClass);
 
   if (target.length > 0) {
@@ -277,19 +277,19 @@ export function pagination(paginationClass:string = '.pagination'){
         totalPages: totalPages,
         startPage: actualPage,
         visiblePages: 4,
-        first: "First",
-        last: "Last",
+        first: 'First',
+        last: 'Last',
         prev: '<i class="fas fa-angle-left"></i>',
         next: '<i class="fas fa-angle-right"></i>'
-      }).on("page", function(evt, page){
-        window.location.href = currentRoute+"&"+page;
-      })
-    })
+      }).on('page', function(evt, page) {
+        window.location.href = currentRoute + '&' + page;
+      });
+    });
   }
 }
 
 
-export function tabs(tabClass:string = '.ps-tab-list') {
+export function tabs(tabClass: string = '.ps-tab-list') {
   $(tabClass + '  li > a ').on('click', function(e) {
     e.preventDefault();
     var target = $(this).attr('href');
@@ -308,23 +308,51 @@ export function tabs(tabClass:string = '.ps-tab-list') {
   });
 }
 
-export function validateSearch(value:string){
+export function validateSearch(value: string) {
 
   const search = value.toLowerCase();
 
   const match = /^[a-z0-9ñÑáéíóú ]*$/;
 
-  if(match.test(search)){
+  if (match.test(search)) {
 
-    let searchTest = search.replace(/[ ]/g, "_");
-    searchTest = searchTest.replace(/[ñ]/g, "n");
-    searchTest = searchTest.replace(/[á]/g, "a");
-    searchTest = searchTest.replace(/[é]/g, "e");
-    searchTest = searchTest.replace(/[í]/g, "i");
-    searchTest = searchTest.replace(/[ó]/g, "o");
-    searchTest = searchTest.replace(/[ú]/g, "u");
+    let searchTest = search.replace(/[ ]/g, '_');
+    searchTest = searchTest.replace(/[ñ]/g, 'n');
+    searchTest = searchTest.replace(/[á]/g, 'a');
+    searchTest = searchTest.replace(/[é]/g, 'e');
+    searchTest = searchTest.replace(/[í]/g, 'i');
+    searchTest = searchTest.replace(/[ó]/g, 'o');
+    searchTest = searchTest.replace(/[ú]/g, 'u');
 
     return searchTest;
 
   }
+}
+
+
+export function backToTop() {
+  var scrollPos = 0;
+  var element = $('#back2top');
+  $(window).scroll(function() {
+    var scrollCur = $(window).scrollTop();
+    if (scrollCur > scrollPos) {
+      // scroll down
+      if (scrollCur > 500) {
+        element.addClass('active');
+      } else {
+        element.removeClass('active');
+      }
+    } else {
+      // scroll up
+      element.removeClass('active');
+    }
+
+    scrollPos = scrollCur;
+  });
+
+  element.on('click', function() {
+    $('html, body').animate({
+      scrollTop: '0px'
+    }, 800);
+  });
 }

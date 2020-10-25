@@ -92,7 +92,7 @@ Column Deal Hot
 
                     <h5>{{product.category}}</h5>
 
-                    <h3 class="ps-product__name">{{product.name}}</h3>
+                    <h3 class="ps-product__name cursor-pointer" [routerLink]="['product', product.url]">{{product.name}}</h3>
 
                     <div class="ps-product__meta">
 

@@ -1,0 +1,43 @@
+<header class="header header--product header--sticky" data-sticky="true" *ngIf="product">
+
+  <nav class="navigation">
+
+    <div class="container">
+
+      <article class="ps-product--header-sticky">
+
+        <div class="ps-product__thumbnail">
+
+          <img src="{{_configService.path}}img/products/{{product.category}}/{{product.image}}" [alt]="product.name">
+
+        </div>
+
+        <div class="ps-product__wrapper">
+
+          <div class="ps-product__content">
+
+            <a class="ps-product__title" [routerLink]="['product', product.url]">{{product.name}}</a>
+
+          </div>
+
+          <div class="ps-product__shopping">
+
+            <h4 class="ps-product__price sale">
+              ${{ ((product.offer[0] === 'Disccount') ? product.price - ((product.price * product.offer[1]) / 100) : product.price - product.offer[1]) | number :'2.2'}}
+              <del> ${{product.price}}</del>
+            </h4>
+
+
+            <a class="ps-btn" href="#"> Add to Cart</a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </nav>
+
+</header>

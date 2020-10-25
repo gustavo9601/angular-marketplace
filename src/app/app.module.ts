@@ -36,6 +36,7 @@ import {FormsModule} from '@angular/forms';
 import { TabsDirective } from './directives/tabs.directive';
 import { SearchBreadcrumbComponent } from './pages/search/search-breadcrumb/search-breadcrumb.component';
 import { SearchShowcaseComponent } from './pages/search/search-showcase/search-showcase.component';
+import { CallToActionComponent } from './pages/product/call-to-action/call-to-action.component';
 
 
 
@@ -72,6 +73,7 @@ import { SearchShowcaseComponent } from './pages/search/search-showcase/search-s
     TabsDirective,
     SearchBreadcrumbComponent,
     SearchShowcaseComponent,
+    CallToActionComponent,
   ],
   imports: [
     BrowserModule,

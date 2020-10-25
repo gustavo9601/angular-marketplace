@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 
-import {productLightbox, slickConfig} from './utilities';
+import {backToTop} from './utilities';
 
 /* Declare Jquery */
 declare var jQuery: any;
@@ -258,38 +258,6 @@ export class AppComponent implements OnInit {
         }
       }
 
-
-
-
-
-
-
-      function backToTop() {
-        var scrollPos = 0;
-        var element = $('#back2top');
-        $(window).scroll(function() {
-          var scrollCur = $(window).scrollTop();
-          if (scrollCur > scrollPos) {
-            // scroll down
-            if (scrollCur > 500) {
-              element.addClass('active');
-            } else {
-              element.removeClass('active');
-            }
-          } else {
-            // scroll up
-            element.removeClass('active');
-          }
-
-          scrollPos = scrollCur;
-        });
-
-        element.on('click', function() {
-          $('html, body').animate({
-            scrollTop: '0px'
-          }, 800);
-        });
-      }
 
       function filterSlider() {
         var el = $('.ps-slider');

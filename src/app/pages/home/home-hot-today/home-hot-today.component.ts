@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ConfigService} from '../../../services/config.service';
 import {ProductsService} from '../../../services/products.service';
 
-import {carouselNavigation, countDown, owlCarouselConfig, productLightbox, progressBar, rating, slickConfig} from '../../../utilities';
 import {SalesService} from '../../../services/sales.service';
 
 @Component({
