@@ -41,7 +41,6 @@ export class BestSalesItemComponent implements OnInit {
         if (productsCategory.length > 0) {
 
           this.products = this.mapProducts(this.sliceProducts(this.orderPorductsBySales(productsCategory)));
-          console.log(' this.products', this.products);
           this.loading = false;
         } else {
 

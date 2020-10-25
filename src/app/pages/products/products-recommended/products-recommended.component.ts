@@ -41,7 +41,6 @@ export class ProductsRecommendedComponent implements OnInit {
         if (productsCategory.length > 0) {
 
           this.products = this.mapProducts(this.sliceProducts(this.orderPorductsByViews(productsCategory)));
-          console.log(' this.products', this.products);
           this.loading = false;
         } else {
 

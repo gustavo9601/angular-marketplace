@@ -26,19 +26,31 @@ export class ProductsBreadcrumbComponent implements OnInit {
 
       this._categoriesService.getFilterData('url', params.param).subscribe(
         (responseFiltered) => {
+
           const category = Object.values(responseFiltered);
+
           // Si retorna datos
           if (category.length > 0) {
             this.breadCrumb = category[0]['name'];
+            const idCategory = Object.keys(responseFiltered)[0];
+
+            this._categoriesService.patchData(idCategory, {view: this.setViews(category)}).subscribe();
+
+
           } else {
 
             // Si no existe por categoria, consultamos por subcategoria
             this._subcategoriesService.getFilterData('url', params.param).subscribe(
               (resposneSucategoryFiltered) => {
+                console.log('resposneSucategoryFiltered breadcrumb subcategory', resposneSucategoryFiltered);
 
                 const subCategory = Object.values(resposneSucategoryFiltered);
                 if (subCategory.length > 0) {
                   this.breadCrumb = subCategory[0]['name'];
+                  const idSubCategory = Object.keys(resposneSucategoryFiltered)[0];
+
+                  this._subcategoriesService.patchData(idSubCategory, {view: this.setViews(subCategory)}).subscribe();
+
                 }
               }
             );
@@ -47,6 +59,10 @@ export class ProductsBreadcrumbComponent implements OnInit {
       );
     });
 
+  }
+
+  setViews(item: Array<any>, quatityAdd: number = 1) {
+    return Number(item[0].view) + quatityAdd;
   }
 
 }

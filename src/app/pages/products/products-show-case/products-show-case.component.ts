@@ -47,7 +47,6 @@ export class ProductsShowCaseComponent implements OnInit {
 
     this.activateRoute.params.subscribe(
       (params) => {
-        console.log('params', params);
         this.paramUrl = params;
         this.filterData(params);
       }
@@ -56,7 +55,6 @@ export class ProductsShowCaseComponent implements OnInit {
     this.activateRoute.queryParams.subscribe(
       (queryParams) => {
         if (queryParams.order) {
-          console.log('queryParams', queryParams);
           this.order = queryParams.order;
           this.filterData(this.paramUrl);
         }
@@ -75,7 +73,6 @@ export class ProductsShowCaseComponent implements OnInit {
         if (productsCategory.length > 0) {
 
           this.products = this.mapProducts(this.orderProductsFilter(productsCategory));
-          console.log(' this.products category', this.products);
           this.loading = false;
         } else {
 
@@ -87,7 +84,6 @@ export class ProductsShowCaseComponent implements OnInit {
               if (productsSubCategory.length > 0) {
 
                 this.products = this.mapProducts(this.orderProductsFilter(productsSubCategory));
-                console.log(' this.products subcategory', this.products);
               }
               this.loading = false;
             }
@@ -156,7 +152,7 @@ export class ProductsShowCaseComponent implements OnInit {
   }
 
   orderProductsSelect($event) {
-    console.log('$event', $event);
+    console.log('$event order', $event);
     this.order = $event;
     this.router.navigate(['products', this.paramUrl.param], {queryParams: {order: this.order}});
   }
