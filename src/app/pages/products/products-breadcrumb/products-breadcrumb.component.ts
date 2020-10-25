@@ -42,7 +42,6 @@ export class ProductsBreadcrumbComponent implements OnInit {
             // Si no existe por categoria, consultamos por subcategoria
             this._subcategoriesService.getFilterData('url', params.param).subscribe(
               (resposneSucategoryFiltered) => {
-                console.log('resposneSucategoryFiltered breadcrumb subcategory', resposneSucategoryFiltered);
 
                 const subCategory = Object.values(resposneSucategoryFiltered);
                 if (subCategory.length > 0) {

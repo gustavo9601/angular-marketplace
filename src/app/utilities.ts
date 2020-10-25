@@ -307,3 +307,24 @@ export function tabs(tabClass:string = '.ps-tab-list') {
     $(target).siblings('.ps-tab').removeClass('active');
   });
 }
+
+export function validateSearch(value:string){
+
+  const search = value.toLowerCase();
+
+  const match = /^[a-z0-9ñÑáéíóú ]*$/;
+
+  if(match.test(search)){
+
+    let searchTest = search.replace(/[ ]/g, "_");
+    searchTest = searchTest.replace(/[ñ]/g, "n");
+    searchTest = searchTest.replace(/[á]/g, "a");
+    searchTest = searchTest.replace(/[é]/g, "e");
+    searchTest = searchTest.replace(/[í]/g, "i");
+    searchTest = searchTest.replace(/[ó]/g, "o");
+    searchTest = searchTest.replace(/[ú]/g, "u");
+
+    return searchTest;
+
+  }
+}

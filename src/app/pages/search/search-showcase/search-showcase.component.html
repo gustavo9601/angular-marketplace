@@ -1,8 +1,8 @@
 <div class="ps-shopping ps-tab-root">
 
   <!--=====================================
-Shoping Header
-======================================-->
+  Shoping Header
+  ======================================-->
 
   <div class="ps-shopping__header">
 
@@ -52,8 +52,8 @@ Shoping Header
   </div>
 
   <!--=====================================
-Shoping Body
-======================================-->
+  Shoping Body
+  ======================================-->
 
   <div class="ps-tabs">
 
@@ -83,7 +83,8 @@ Shoping Body
               <div class="ps-product__thumbnail">
 
                 <a [routerLink]="['/product', product.url]">
-                  <img src="{{_configService.path}}img/products/{{product.category}}/{{product.image}}" [alt]="product.name">
+                  <img src="{{_configService.path}}img/products/{{product.category}}/{{product.image}}"
+                       [alt]="product.name">
                 </a>
 
                 <div class="ps-product__rating">
@@ -164,17 +165,16 @@ Shoping Body
       </div>
 
 
-
     </div><!-- End Grid View-->
 
     <!--=====================================
-List View
-======================================-->
+  List View
+  ======================================-->
 
     <div class="ps-tab" id="tab-2">
 
       <div class="ps-shopping-product"
-      *ngIf="products.length > 0 && !loading">
+           *ngIf="products.length > 0 && !loading">
 
         <!--=====================================
         Product
@@ -188,7 +188,8 @@ List View
           <div class="ps-product__thumbnail">
 
             <a [routerLink]="['/product', product.url]">
-              <img src="{{_configService.path}}img/products/{{product.category}}/{{product.image}}" [alt]="product.name">
+              <img src="{{_configService.path}}img/products/{{product.category}}/{{product.image}}"
+                   [alt]="product.name">
             </a>
 
           </div>
@@ -217,7 +218,7 @@ List View
                 <a href="#">{{product.store}}</a>
               </p>
 
-             <div [innerHTML]="product.summary"></div>
+              <div [innerHTML]="product.summary"></div>
 
             </div>
 
@@ -245,8 +246,6 @@ List View
 
 
       <app-preload *ngIf="loading"></app-preload>
-
-
 
 
     </div>
@@ -277,5 +276,6 @@ List View
     </div>
 
   </div>
+
 
 </div>

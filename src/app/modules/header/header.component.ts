@@ -2,6 +2,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ConfigService} from '../../services/config.service';
 import {CategoriesService} from '../../services/categories.service';
 import {SubCategoriesService} from '../../services/sub-categories.service';
+import {Router} from '@angular/router';
+import {validateSearch} from '../../utilities';
 
 
 @Component({
@@ -17,7 +19,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(public _configService: ConfigService,
               private _categoriesService: CategoriesService,
-              private _subCategoriesService: SubCategoriesService) {
+              private _subCategoriesService: SubCategoriesService,
+              private router: Router) {
     this.categories = null;
   }
 
@@ -67,6 +70,15 @@ export class HeaderComponent implements OnInit {
 
   emitCategoriesParent() {
     this.categories_emit.emit(this.categories);
+  }
+
+
+  goSearch(value: string) {
+    if (value.length > 0 && validateSearch(value)) {
+      console.log('value searchresposneSucategoryFiltered ', value);
+      this.router.navigate(['/search', validateSearch(value)]);
+    }
+    return false;
   }
 
 }

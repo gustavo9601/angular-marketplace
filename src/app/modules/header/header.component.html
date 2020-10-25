@@ -108,18 +108,14 @@ Menú
   ======================================-->
 
       <div class="header__content-center">
-        <form class="ps-form--quick-search" action="index.html" method="get">
-          <div class="form-group--icon">
-            <i class="icon-chevron-down"></i>
-            <select class="form-control">
-              <option value="1">All</option>
-              <option value="1">Smartphone</option>
-              <option value="1">Sounds</option>
-              <option value="1">Technology toys</option>
-            </select>
-          </div>
-          <input class="form-control" type="text" placeholder="I'm shopping for...">
-          <button>Search</button>
+        <form class="ps-form--quick-search">
+          <input
+            #searchInput
+            (keyup.enter)="goSearch(searchInput.value)"
+            class="form-control"
+            type="text"
+            placeholder="I'm shopping for...">
+          <button type="button" (click)="goSearch(searchInput.value)">Search</button>
         </form>
       </div>
 

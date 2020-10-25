@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 
 import {config} from '../config';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +30,10 @@ export class ProductsService {
 
   getFilterData(orderBy, equalTo) {
     return this.http.get(this.api + 'products.json?orderBy="' + orderBy + '"&equalTo="' + equalTo + '"');
+  }
+
+  getSearchData(valueToFind: string, propertie: string) {
+    return  this.http.get(this.api + 'products.json?orderBy="' + propertie + '"&startAt="' + valueToFind + '"&endAt="' + valueToFind + '\uf8ff"&print="pretty"');
   }
 
 }

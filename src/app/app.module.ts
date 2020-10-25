@@ -34,6 +34,9 @@ import { ProductsShowCaseComponent } from './pages/products/products-show-case/p
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule} from '@angular/forms';
 import { TabsDirective } from './directives/tabs.directive';
+import { SearchBreadcrumbComponent } from './pages/search/search-breadcrumb/search-breadcrumb.component';
+import { SearchShowcaseComponent } from './pages/search/search-showcase/search-showcase.component';
+
 
 
 @NgModule({
@@ -67,6 +70,8 @@ import { TabsDirective } from './directives/tabs.directive';
     ProductsRecommendedComponent,
     ProductsShowCaseComponent,
     TabsDirective,
+    SearchBreadcrumbComponent,
+    SearchShowcaseComponent,
   ],
   imports: [
     BrowserModule,
