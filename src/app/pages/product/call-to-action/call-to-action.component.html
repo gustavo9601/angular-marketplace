@@ -1,4 +1,4 @@
-<header class="header header--product header--sticky" data-sticky="true" *ngIf="product">
+<header class="header header--product" [ngClass]="{'header--sticky': isStikyHeader}" data-sticky="true" *ngIf="product">
 
   <nav class="navigation">
 

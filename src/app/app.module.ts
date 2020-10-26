@@ -37,6 +37,10 @@ import { TabsDirective } from './directives/tabs.directive';
 import { SearchBreadcrumbComponent } from './pages/search/search-breadcrumb/search-breadcrumb.component';
 import { SearchShowcaseComponent } from './pages/search/search-showcase/search-showcase.component';
 import { CallToActionComponent } from './pages/product/call-to-action/call-to-action.component';
+import { ProductBreadcrumbComponent } from './pages/product/product-breadcrumb/product-breadcrumb.component';
+import { ProductLeftComponent } from './pages/product/product-left/product-left.component';
+import { ProductRightComponent } from './pages/product/product-right/product-right.component';
+
 
 
 
@@ -74,6 +78,9 @@ import { CallToActionComponent } from './pages/product/call-to-action/call-to-ac
     SearchBreadcrumbComponent,
     SearchShowcaseComponent,
     CallToActionComponent,
+    ProductBreadcrumbComponent,
+    ProductLeftComponent,
+    ProductRightComponent,
   ],
   imports: [
     BrowserModule,

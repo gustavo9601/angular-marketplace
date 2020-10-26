@@ -4,7 +4,7 @@ import {productLightbox} from '../utilities';
 @Directive({
   selector: '[appLightBox]'
 })
-export class LightBoxDirective implements OnInit{
+export class LightBoxDirective implements OnInit {
 
   @Input('appLightBox') appLightBox: boolean;
   @Input('classLightBox') classLightBox: string;
@@ -17,7 +17,9 @@ export class LightBoxDirective implements OnInit{
     // Si es el ulitmo en iterar
     if (this.appLightBox) {
       // Activara la funcionalidad jquery
-      productLightbox('.' + this.classLightBox);
+      setTimeout(() => {
+        productLightbox('.' + this.classLightBox);
+      }, 100);
     }
   }
 

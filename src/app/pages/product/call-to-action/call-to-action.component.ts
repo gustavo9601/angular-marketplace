@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ConfigService} from '../../../services/config.service';
 import {ActivatedRoute} from '@angular/router';
 import {ProductsService} from '../../../services/products.service';
+import {fromEvent} from 'rxjs';
+
 
 @Component({
   selector: 'app-call-to-action',
@@ -11,14 +13,15 @@ import {ProductsService} from '../../../services/products.service';
 export class CallToActionComponent implements OnInit {
 
   urlProduct: string;
-  product:any;
+  product: any;
+  isStikyHeader: boolean;
 
   constructor(public _configService: ConfigService,
               private activatedRoute: ActivatedRoute,
               private _productsService: ProductsService) {
     this.urlProduct = '';
     this.product = null;
-
+    this.isStikyHeader = false;
   }
 
   ngOnInit(): void {
@@ -30,7 +33,7 @@ export class CallToActionComponent implements OnInit {
 
           this._productsService.getFilterData('url', this.urlProduct).subscribe(
             (productFilter) => {
-              console.log('productFilter', productFilter);
+
 
               const products = Object.values(productFilter);
 
@@ -48,7 +51,9 @@ export class CallToActionComponent implements OnInit {
               });
 
               this.product = products[0];
-              console.log("this.product", this.product);
+
+              // Activando el stiky header
+              this.stickyHeader();
 
             }
           );
@@ -56,6 +61,7 @@ export class CallToActionComponent implements OnInit {
         }
       }
     );
+
 
   }
 
@@ -67,5 +73,19 @@ export class CallToActionComponent implements OnInit {
     return Math.round(sum / reviews.length);
   }
 
+
+  stickyHeader() {
+    const scrollEvent = fromEvent(document, 'scroll');
+    const checkpoint = 50;
+
+    scrollEvent.subscribe((evento: any) => {
+      // console.log(evento.target.documentElement.scrollTop);
+      if (evento.target.documentElement.scrollTop > checkpoint) {
+        this.isStikyHeader = true;
+      } else {
+        this.isStikyHeader = false;
+      }
+    });
+  }
 
 }
