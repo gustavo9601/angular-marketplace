@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {StoresService} from '../../../../services/stores.service';
 import {ConfigService} from '../../../../services/config.service';
 
@@ -8,7 +8,7 @@ import {ConfigService} from '../../../../services/config.service';
   templateUrl: './vendor-store.component.html',
   styleUrls: ['./vendor-store.component.css']
 })
-export class VendorStoreComponent implements OnInit {
+export class VendorStoreComponent implements OnChanges {
 
   @Input('store') store: string;
   storeLoaded:any;
@@ -20,11 +20,11 @@ export class VendorStoreComponent implements OnInit {
     this.loading = false;
   }
 
-  ngOnInit(): void {
+
+  ngOnChanges(changes: SimpleChanges): void {
     this.loading = true;
     this._storesService.getFilterData('store', this.store).subscribe(
       (responseStore) => {
-        console.log("responseStore", responseStore);
         this.storeLoaded = responseStore[0];
         this.loading = false;
       }

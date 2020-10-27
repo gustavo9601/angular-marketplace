@@ -70,7 +70,7 @@ Menu subcategory
 
           <div class="ps-product__thumbnail">
 
-            <a [routerLink]="['products', productCategory.url]">
+            <a [routerLink]="['/products', productCategory.url]">
 
               <img src="{{_configService.path}}img/products/{{productCategory.category}}/1.jpg" alt="">
 
@@ -87,7 +87,7 @@ Menu subcategory
 
             <div class="ps-product__content" data-mh="clothing">
 
-              <a class="ps-product__title" [routerLink]="['products', productCategory.url]">{{productCategory.name}}
+              <a class="ps-product__title" [routerLink]="['/products', productCategory.url]">{{productCategory.name}}
                 r</a>
 
               <div class="ps-product__rating">

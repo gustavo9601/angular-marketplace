@@ -43,6 +43,7 @@ import { ProductRightComponent } from './pages/product/product-right/product-rig
 import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
 import { BoughtTogetherComponent } from './pages/product/product-left/bought-together/bought-together.component';
 import { VendorStoreComponent } from './pages/product/product-left/vendor-store/vendor-store.component';
+import { ReviewsComponent } from './pages/product/product-left/reviews/reviews.component';
 
 
 
@@ -87,6 +88,7 @@ import { VendorStoreComponent } from './pages/product/product-left/vendor-store/
     DomSanitizerPipe,
     BoughtTogetherComponent,
     VendorStoreComponent,
+    ReviewsComponent,
   ],
   imports: [
     BrowserModule,

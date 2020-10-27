@@ -40,7 +40,6 @@ export class ProductLeftComponent implements OnInit {
               // Si retorna datos
               if (products.length > 0) {
                 this.product = this.mapProducts(products)[0];
-                console.log('this.product', this.product);
                 this.loading = false;
               }
             }
@@ -75,8 +74,6 @@ export class ProductLeftComponent implements OnInit {
 
 
   quantityChange() {
-    console.log("this.product.stock", this.product.stock);
-
     if (this.quantity >= this.product.stock) {
       this.quantity = 1;
     }

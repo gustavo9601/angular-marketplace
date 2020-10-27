@@ -30,12 +30,10 @@ export class BoughtTogetherComponent implements OnInit, OnChanges {
     this.loading = true;
     this._productsService.getFilterData('title_list', this.product.title_list).subscribe(
       (responseData) => {
-        console.log('responseData', responseData);
         const products = Object.values(responseData);
         // Si retorna datos
         if (products.length > 0) {
           this.chooseProducts = this.sliceProducts(this.orderPorductsByViews(this.mapProducts(products)));
-          console.log('this.chooseProduct', this.chooseProducts);
         }
 
         this.sumProducts();
