@@ -10,17 +10,19 @@ import {ProductsService} from '../../../services/products.service';
 })
 export class ProductLeftComponent implements OnInit {
 
-  urlProduct:string;
-  product:any;
-  loading:boolean;
+  urlProduct: string;
+  product: any;
+  loading: boolean;
+  quantity: number;
 
   constructor(public _configService: ConfigService,
-              private _productService:ProductsService,
+              private _productService: ProductsService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
     this.urlProduct = '';
     this.product = null;
     this.loading = false;
+    this.quantity = 1;
   }
 
   ngOnInit(): void {
@@ -29,16 +31,16 @@ export class ProductLeftComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params) => {
 
-        if (params.param){
+        if (params.param) {
           this.urlProduct = params.param;
           this._productService.getFilterData('url', this.urlProduct).subscribe(
             (response) => {
-              console.log("response products left", response);
+              console.log('response products left', response);
               const products = Object.values(response);
               // Si retorna datos
               if (products.length > 0) {
                 this.product = this.mapProducts(products)[0];
-                console.log("this.product", this.product);
+                console.log('this.product', this.product);
                 this.loading = false;
               }
             }
@@ -71,5 +73,16 @@ export class ProductLeftComponent implements OnInit {
     return formatProducts;
   }
 
+
+  quantityChange() {
+    console.log("this.product.stock", this.product.stock);
+
+    if (this.quantity >= this.product.stock) {
+      this.quantity = 1;
+    }
+    if (this.quantity < 1) {
+      this.quantity = 1;
+    }
+  }
 
 }

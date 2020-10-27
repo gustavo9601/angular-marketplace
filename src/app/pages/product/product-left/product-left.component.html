@@ -226,15 +226,21 @@ Product Info
 
           <div class="form-group--number">
 
-            <button class="up">
+            <button class="up" (click)="quantity=quantity+1;quantityChange();" [disabled]="quantity >= product.stock">
               <i class="fa fa-plus"></i>
             </button>
 
-            <button class="down">
+            <button class="down" (click)="quantity=quantity-1;quantityChange();" [disabled]="quantity <= 1" >
               <i class="fa fa-minus"></i>
             </button>
 
-            <input class="form-control" type="text" placeholder="1" [max]="product.stock">
+            <input class="form-control"
+                   type="text" placeholder="1"
+                   min="1"
+                   step="1"
+                   (change)="quantityChange()"
+                   [(ngModel)]="quantity"
+                   [max]="product.stock">
 
           </div>
 
