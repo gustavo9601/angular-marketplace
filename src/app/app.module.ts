@@ -41,6 +41,7 @@ import { ProductBreadcrumbComponent } from './pages/product/product-breadcrumb/p
 import { ProductLeftComponent } from './pages/product/product-left/product-left.component';
 import { ProductRightComponent } from './pages/product/product-right/product-right.component';
 import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
+import { BoughtTogetherComponent } from './pages/product/product-left/bought-together/bought-together.component';
 
 
 
@@ -83,6 +84,7 @@ import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
     ProductLeftComponent,
     ProductRightComponent,
     DomSanitizerPipe,
+    BoughtTogetherComponent,
   ],
   imports: [
     BrowserModule,

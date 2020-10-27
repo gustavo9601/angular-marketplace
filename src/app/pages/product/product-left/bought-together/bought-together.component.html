@@ -1,0 +1,58 @@
+<div class="ps-block--bought-toggether">
+
+  <h4>Frequently Bought Together</h4>
+
+  <div class="ps-block__content">
+
+    <app-preload *ngIf="loading"></app-preload>
+
+    <div class="ps-block__items" *ngIf="chooseProducts && !loading">
+
+      <div class="ps-block__item" [ngClass]="{'add' : !lastProduct}"  *ngFor="let chooseProduct of chooseProducts;let lastProduct = last">
+
+        <div class="ps-product ps-product--simple">
+
+          <div class="ps-product__thumbnail">
+
+            <a [routerLink]="['/product', chooseProduct.url]">
+              <img src="{{_configService.path}}img/products/{{chooseProduct.category}}/{{chooseProduct.image}}" alt="">
+            </a>
+
+          </div>
+
+          <div class="ps-product__container">
+
+            <div class="ps-product__content">
+              <a class="ps-product__title"  [routerLink]="['/product', chooseProduct.url]">{{chooseProduct.name}}</a>
+
+
+              <h4 class="ps-product__price sale">
+                ${{ ((chooseProduct.offer[0] === 'Disccount') ? chooseProduct.price - ((chooseProduct.price * chooseProduct.offer[1]) / 100) : chooseProduct.price - chooseProduct.offer[1]) | number :'2.2'}}
+                <del> ${{chooseProduct.price}}</del>
+              </h4>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="ps-block__item ps-block__total">
+
+        <p>Total Price:<strong> ${{totalPrice | number}}</strong></p>
+
+        <a class="ps-btn" href="#">Add All to cart</a>
+        <a class="ps-btn ps-btn--gray ps-btn--outline" href="#">Add All to whishlist</a>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>

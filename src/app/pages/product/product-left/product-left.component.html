@@ -121,9 +121,6 @@ Product Info
       </div>
 
 
-      <!--Video-->
-      {{'https://www.youtube.com/embed/' + product.video[1]}}
-
 
       <div class="ps-product__variations">
 
@@ -278,7 +275,7 @@ Product Info
 
         <p class="tags"><strong> Tags</strong>
 
-          <a href="#">sofa</a>
+          <a [routerLink]="['/search', tag]" *ngFor="let tag of product.tags">{{tag}}, </a>
 
         </p>
 
@@ -314,104 +311,10 @@ Product Content
 ======================================-->
 
   <div class="ps-product__content ps-tab-root">
-
-    <div class="ps-block--bought-toggether">
-
-      <h4>Frequently Bought Together</h4>
-
-      <div class="ps-block__content">
-
-        <div class="ps-block__items">
-
-          <div class="ps-block__item">
-
-            <div class="ps-product ps-product--simple">
-
-              <div class="ps-product__thumbnail">
-
-                <a href="product-default.html">
-                  <img src="{{_configService.path}}img/products/furniture/12.jpg" alt="">
-                </a>
-
-              </div>
-
-              <div class="ps-product__container">
-
-                <div class="ps-product__content">
-                  <a class="ps-product__title" href="product-default.html">Korea Long Sofa Fabric In Blue Navy Color</a>
-
-                  <p class="ps-product__price">$679.80</p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="ps-block__item">
-
-            <div class="ps-product ps-product--simple">
-
-              <div class="ps-product__thumbnail">
-
-                <a href="product-default.html">
-                  <img src="{{_configService.path}}img/products/furniture/13.jpg" alt="">
-                </a>
-
-              </div>
-
-              <div class="ps-product__container">
-
-                <div class="ps-product__content">
-
-                  <a class="ps-product__title" href="product-default.html">Fabric Chair In Brown Color</a>
-
-                  <p class="ps-product__price">$120.80</p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="ps-block__item ps-block__total">
-
-            <p>Total Price:<strong> $1000.30</strong></p>
-
-            <a class="ps-btn" href="#">Add All to cart</a>
-            <a class="ps-btn ps-btn--gray ps-btn--outline" href="#">Add All to whishlist</a>
-
-          </div>
-
-        </div>
-
-        <div class="ps-block__footer">
-
-          <div class="ps-checkbox">
-
-            <input class="form-control" type="checkbox" id="product-bought-1" name="product-bought" checked>
-
-            <label for="product-bought-1"><strong>This item: </strong> Korea Long Sofa Fabric In Blue Navy Color <span>$679.80</span></label>
-
-          </div>
-
-          <div class="ps-checkbox">
-
-            <input class="form-control" type="checkbox" id="product-bought-2" name="product-bought" checked>
-
-            <label for="product-bought-2">Fabric Chair In Brown Color <span>$120.80</span></label>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
+    <!--=====================================
+  Bought Together
+  ======================================-->
+    <app-bought-together [product]="product"></app-bought-together>
 
     <ul class="ps-tab-list">
 

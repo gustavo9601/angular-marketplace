@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component,  OnInit} from '@angular/core';
 import {ConfigService} from '../../../services/config.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductsService} from '../../../services/products.service';
@@ -15,6 +15,7 @@ export class ProductLeftComponent implements OnInit {
   loading: boolean;
   quantity: number;
 
+
   constructor(public _configService: ConfigService,
               private _productService: ProductsService,
               private activatedRoute: ActivatedRoute,
@@ -22,7 +23,7 @@ export class ProductLeftComponent implements OnInit {
     this.urlProduct = '';
     this.product = null;
     this.loading = false;
-    this.quantity = 1;
+
   }
 
   ngOnInit(): void {
@@ -30,12 +31,11 @@ export class ProductLeftComponent implements OnInit {
     this.loading = true;
     this.activatedRoute.params.subscribe(
       (params) => {
-
+        this.quantity = 1;
         if (params.param) {
           this.urlProduct = params.param;
           this._productService.getFilterData('url', this.urlProduct).subscribe(
             (response) => {
-              console.log('response products left', response);
               const products = Object.values(response);
               // Si retorna datos
               if (products.length > 0) {
@@ -49,7 +49,6 @@ export class ProductLeftComponent implements OnInit {
       }
     );
   }
-
 
   calculateReview(reviews: Array<any>) {
     let sum = 0;
@@ -68,6 +67,7 @@ export class ProductLeftComponent implements OnInit {
       product.reviews = JSON.parse(product.reviews);
       product.video = JSON.parse(product.video);
       product.calculate_review = this.calculateReview(product.reviews);
+      product.tags = product.tags.split(',');
       product.offer[2] = new Date(Date.parse(product.offer[2]));  // parseando el string a un tipo fecha
     });
     return formatProducts;
