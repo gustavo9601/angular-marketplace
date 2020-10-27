@@ -1,0 +1,16 @@
+<div class="media p-3" *ngIf="storeLoaded && !loading">
+  <img src="{{_configService.path}}/img/stores/{{storeLoaded.url}}/{{storeLoaded.logo}}"
+       class="mr-5 mt-1 rounded-circle"
+       [alt]="storeLoaded.store">
+  <div class="media-body">
+    <h4>{{store}}</h4>
+    <p>{{storeLoaded.abstract}}</p>
+    <a [routerLink]="['/store', storeLoaded.url]"
+       class="ps-btn"
+    >Visit store</a>
+  </div>
+</div>
+
+
+<app-preload *ngIf="loading"></app-preload>
+

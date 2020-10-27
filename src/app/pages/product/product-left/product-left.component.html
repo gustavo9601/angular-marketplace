@@ -323,7 +323,7 @@ Product Content
       <li><a href="#tab-3">Vendor</a></li>
       <li><a href="#tab-4">Reviews (1)</a></li>
       <li><a href="#tab-5">Questions and Answers</a></li>
-      <li><a href="#tab-6">More Offers</a></li>
+
 
     </ul>
 
@@ -339,12 +339,8 @@ Product Content
 
       <div class="ps-tab" id="tab-3">
 
-        <h4>GoPro</h4>
-
-        <p>Digiworld US, New York’s no.1 online retailer was established in May 2012 with the aim and vision to become
-          the one-stop shop for retail in New York with implementation of best practices both online</p>
-
-        <a href="#">More Products from gopro</a>
+        <!--Vendor store component-->
+       <app-vendor-store [store]="product.store"></app-vendor-store>
 
       </div>
 
@@ -528,11 +524,6 @@ Product Content
 
       </div>
 
-      <div class="ps-tab active" id="tab-6">
-
-        <p>Sorry no more offers available</p>
-
-      </div>
 
     </div>
 
