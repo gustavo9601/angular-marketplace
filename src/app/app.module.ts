@@ -40,6 +40,7 @@ import { CallToActionComponent } from './pages/product/call-to-action/call-to-ac
 import { ProductBreadcrumbComponent } from './pages/product/product-breadcrumb/product-breadcrumb.component';
 import { ProductLeftComponent } from './pages/product/product-left/product-left.component';
 import { ProductRightComponent } from './pages/product/product-right/product-right.component';
+import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
 
 
 
@@ -81,6 +82,7 @@ import { ProductRightComponent } from './pages/product/product-right/product-rig
     ProductBreadcrumbComponent,
     ProductLeftComponent,
     ProductRightComponent,
+    DomSanitizerPipe,
   ],
   imports: [
     BrowserModule,
