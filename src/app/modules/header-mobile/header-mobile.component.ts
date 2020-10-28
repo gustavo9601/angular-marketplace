@@ -33,7 +33,6 @@ export class HeaderMobileComponent implements OnInit {
 
   goSearch(value: string) {
     if (value.length > 0 && validateSearch(value)) {
-      console.log('value searchresposneSucategoryFiltered ', value);
       this.router.navigate(['/search', validateSearch(value)]);
     }
     return false;

@@ -137,7 +137,6 @@ export class SearchShowcaseComponent implements OnInit {
   }
 
   orderProductsSelect($event) {
-    console.log('$event order', $event);
     this.order = $event;
     this.router.navigate(['search', this.paramUrl.param], {queryParams: {order: this.order}});
   }

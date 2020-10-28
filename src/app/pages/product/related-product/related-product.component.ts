@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {ConfigService} from '../../../services/config.service';
 import {ProductsService} from '../../../services/products.service';
+import {ConfigService} from '../../../services/config.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-product-right',
-  templateUrl: './product-right.component.html',
-  styleUrls: ['./product-right.component.css']
+  selector: 'app-related-product',
+  templateUrl: './related-product.component.html',
+  styleUrls: ['./related-product.component.css']
 })
-export class ProductRightComponent implements OnInit {
+export class RelatedProductComponent implements OnInit {
 
 
   loading: boolean;
@@ -25,9 +25,10 @@ export class ProductRightComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.loading = true;
+
     this.activatedRoute.params.subscribe(
       (params) => {
+        this.loading = true;
         if (params.param) {
           this.urlProduct = params.param;
 
@@ -35,7 +36,7 @@ export class ProductRightComponent implements OnInit {
           this._productService.getFilterData('url', this.urlProduct).subscribe(
             (response: any) => {
 
-              this._productService.getFilterData('store', (Object.values(response)[0] as any).store).subscribe(
+              this._productService.getFilterData('category', (Object.values(response)[0] as any).category).subscribe(
                 (responseStore) => {
 
                   const products = Object.values(responseStore);
@@ -73,8 +74,8 @@ export class ProductRightComponent implements OnInit {
   }
 
   sliceProducts(products: Array<any>): Array<any> {
-    if (products.length > 2) {
-      return products.slice(0, 2);
+    if (products.length > 10) {
+      return products.slice(0, 10);
     }
     return products;
   }
@@ -89,8 +90,9 @@ export class ProductRightComponent implements OnInit {
 
   orderPorductsBySells(products: Array<any>): Array<any> {
     const productsOrderBySales = products.sort((a, b) => {
-      return (b.sales - a.sales);
+      return (b.views - a.views);
     });
     return productsOrderBySales;
   }
+
 }

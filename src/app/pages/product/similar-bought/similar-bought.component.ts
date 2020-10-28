@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {ConfigService} from '../../../services/config.service';
+import { Component, OnInit } from '@angular/core';
 import {ProductsService} from '../../../services/products.service';
+import {ConfigService} from '../../../services/config.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-product-right',
-  templateUrl: './product-right.component.html',
-  styleUrls: ['./product-right.component.css']
+  selector: 'app-similar-bought',
+  templateUrl: './similar-bought.component.html',
+  styleUrls: ['./similar-bought.component.css']
 })
-export class ProductRightComponent implements OnInit {
+export class SimilarBoughtComponent implements OnInit {
 
 
   loading: boolean;
@@ -35,13 +35,14 @@ export class ProductRightComponent implements OnInit {
           this._productService.getFilterData('url', this.urlProduct).subscribe(
             (response: any) => {
 
-              this._productService.getFilterData('store', (Object.values(response)[0] as any).store).subscribe(
+              this._productService.getFilterData('sub_category', (Object.values(response)[0] as any).sub_category).subscribe(
                 (responseStore) => {
 
                   const products = Object.values(responseStore);
                   // Si retorna datos
                   if (products.length > 0) {
                     this.products = this.sliceProducts(this.orderPorductsBySells(this.mapProducts(products)));
+
                     this.loading = false;
                   }
 
@@ -73,8 +74,8 @@ export class ProductRightComponent implements OnInit {
   }
 
   sliceProducts(products: Array<any>): Array<any> {
-    if (products.length > 2) {
-      return products.slice(0, 2);
+    if (products.length > 6) {
+      return products.slice(0, 6);
     }
     return products;
   }
@@ -89,8 +90,9 @@ export class ProductRightComponent implements OnInit {
 
   orderPorductsBySells(products: Array<any>): Array<any> {
     const productsOrderBySales = products.sort((a, b) => {
-      return (b.sales - a.sales);
+      return (b.views - a.views);
     });
     return productsOrderBySales;
   }
+
 }

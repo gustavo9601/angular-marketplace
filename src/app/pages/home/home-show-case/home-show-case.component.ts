@@ -82,13 +82,4 @@ export class HomeShowCaseComponent implements OnInit {
     return Math.round(sum / reviews.length);
   }
 
-  callbackSlideVertical() {
-    if (this.renderSlideVertical) {
-      console.log("entro");
-      this.renderSlideVertical = false;
-      owlCarouselConfig();
-      carouselNavigation();
-      rating();
-    }
-  }
 }

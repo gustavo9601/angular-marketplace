@@ -152,7 +152,6 @@ export class ProductsShowCaseComponent implements OnInit {
   }
 
   orderProductsSelect($event) {
-    console.log('$event order', $event);
     this.order = $event;
     this.router.navigate(['products', this.paramUrl.param], {queryParams: {order: this.order}});
   }

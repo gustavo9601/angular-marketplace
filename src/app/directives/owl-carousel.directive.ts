@@ -5,7 +5,7 @@ import {carouselNavigation, owlCarouselConfig} from '../utilities';
 @Directive({
   selector: '[appOwlCarousel]'
 })
-export class OwlCarouselDirective implements OnInit{
+export class OwlCarouselDirective implements OnInit {
 
   @Input('appOwlCarousel') appOwlCarousel: boolean;
   @Input('classOwlCarousel') classOwlCarousel: string;
@@ -18,12 +18,14 @@ export class OwlCarouselDirective implements OnInit{
     this.setUp();
   }
 
-  setUp(){
+  setUp() {
     // Si es el ulitmo en iterar
-    if (this.appOwlCarousel){
+    if (this.appOwlCarousel) {
       // Activara el slide para la clase
-      owlCarouselConfig('.' + this.classOwlCarousel);
-      carouselNavigation();
+
+        owlCarouselConfig('.' + this.classOwlCarousel);
+        carouselNavigation();
+
     }
   }
 

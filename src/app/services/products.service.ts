@@ -36,4 +36,8 @@ export class ProductsService {
     return  this.http.get(this.api + 'products.json?orderBy="' + propertie + '"&startAt="' + valueToFind + '"&endAt="' + valueToFind + '\uf8ff"&print="pretty"');
   }
 
+
+  patchData(id: string, value: Object) {
+    return this.http.patch(this.api + 'products/' + id + '.json', value);
+  }
 }
