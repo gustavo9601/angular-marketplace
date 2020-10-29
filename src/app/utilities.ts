@@ -410,3 +410,7 @@ export function sweetAlert(type: string = 'success', message: string = 'Ok!', ti
     button: 'Ok!',
   });
 }
+
+export function positionTopPage(){
+  window.scroll(0,0);
+}

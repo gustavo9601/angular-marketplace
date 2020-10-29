@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {positionTopPage} from '../../utilities';
 
 @Component({
   selector: 'app-products',
@@ -11,7 +12,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    positionTopPage();
   }
 
 }

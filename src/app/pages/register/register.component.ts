@@ -3,6 +3,7 @@ import {User} from '../../models/user';
 import {UsersService} from '../../services/users.service';
 import {NgForm} from '@angular/forms';
 import {sweetAlert} from '../../utilities';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
 
   user: User;
 
-  constructor(private _usersService: UsersService) {
+  constructor(private _usersService: UsersService,
+              private router:Router) {
     this.user = new User();
   }
 
@@ -47,6 +49,7 @@ export class RegisterComponent implements OnInit {
               console.log('responseDB', responseDB);
               formRegister.reset();
               sweetAlert('success', 'User was created correctly, please check your email and cofirm asp', 'Success');
+              this.router.navigate(['/login']);
             }
           );
         }
