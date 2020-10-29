@@ -46,6 +46,8 @@ import { VendorStoreComponent } from './pages/product/product-left/vendor-store/
 import { ReviewsComponent } from './pages/product/product-left/reviews/reviews.component';
 import { SimilarBoughtComponent } from './pages/product/similar-bought/similar-bought.component';
 import { RelatedProductComponent } from './pages/product/related-product/related-product.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 
@@ -93,13 +95,16 @@ import { RelatedProductComponent } from './pages/product/related-product/related
     ReviewsComponent,
     SimilarBoughtComponent,
     RelatedProductComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

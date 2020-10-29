@@ -1,0 +1,214 @@
+<!--=====================================
+  Breadcrumb
+  ======================================-->
+
+<div class="ps-breadcrumb">
+
+  <div class="container">
+
+    <ul class="breadcrumb">
+
+      <li><a href="index.html">Home</a></li>
+
+      <li>My Account</li>
+
+    </ul>
+
+  </div>
+
+</div>
+
+<!--=====================================
+   Login - Register Content
+   ======================================-->
+
+<div class="ps-my-account">
+
+  <div class="container">
+
+    <form class="ps-form--account ps-tab-root" (ngSubmit)="registerUser(registerUserForm)" #registerUserForm="ngForm">
+
+      <ul class="ps-tab-list">
+
+        <li><a [routerLink]="['/login']">Login</a></li>
+
+        <li class="active"><a [routerLink]="['/register']">Register</a></li>
+
+      </ul>
+
+      <div class="ps-tabs">
+
+        <!--=====================================
+        Register Form
+        ======================================-->
+
+        <div class="ps-tab active" id="register">
+
+          <div class="ps-form__content">
+
+            <h5>Register An Account</h5>
+
+            <div class="form-group">
+
+              <input class="form-control"
+                     [(ngModel)]="user.first_name"
+                     #name="ngModel"
+                     [ngClass]="{'is-valid': name.dirty && name.valid, 'is-invalid': name.dirty && name.invalid}"
+                     minlength="4" maxlength="20" pattern="[A-Za-z]+" required
+                     data-toggle="tooltip" title="Enter your Name"
+                     type="text" name="name" placeholder="Firstname">
+              <div class="valid-feedback"
+                   *ngIf="name.valid && name.dirty">Name valid!
+              </div>
+              <div class="invalid-feedback" *ngIf="name.errors?.required && name.dirty">Name required</div>
+              <div class="invalid-feedback" *ngIf="name.errors?.pattern && name.dirty">Name just allow letters</div>
+              <div class="invalid-feedback" *ngIf="name.errors?.minlength && name.dirty">Name must be at least 4
+                characters
+              </div>
+              <div class="invalid-feedback" *ngIf="name.errors?.maxlength && name.dirty">Name must be maximum 20
+                characters
+              </div>
+
+            </div>
+
+            <div class="form-group">
+
+              <input class="form-control"
+                     [(ngModel)]="user.last_name"
+                     #last_name="ngModel"
+                     minlength="4" maxlength="20" pattern="[A-Za-z]+" required
+                     [ngClass]="{'is-valid': last_name.dirty && last_name.valid, 'is-invalid': last_name.dirty && last_name.invalid}"
+                     data-toggle="tooltip" title="Enter your last name"
+                     type="text" name="last_name"
+                     placeholder="Last Name">
+
+              <div class="valid-feedback"
+                   *ngIf="last_name.valid && last_name.dirty">last_name valid!
+              </div>
+              <div class="invalid-feedback" *ngIf="last_name.errors?.required && last_name.dirty">last_name required
+              </div>
+              <div class="invalid-feedback" *ngIf="last_name.errors?.pattern && last_name.dirty">last_name just allow
+                letters and numbers
+              </div>
+              <div class="invalid-feedback" *ngIf="last_name.errors?.minlength && last_name.dirty">last_name must be at
+                least 4 characters
+              </div>
+              <div class="invalid-feedback" *ngIf="last_name.errors?.maxlength && last_name.dirty">last_name must be
+                maximum 20 characters
+              </div>
+
+
+            </div>
+
+            <div class="form-group">
+
+              <input class="form-control"
+                     [(ngModel)]="user.username"
+                     (change)="validateEmailUserName(username.value, 'username')"
+                     type="text"
+                     #username="ngModel"
+                     minlength="4" maxlength="20" pattern="[A-Za-z0-9]+" required
+                     [ngClass]="{'is-valid': username.dirty && username.valid, 'is-invalid': username.dirty && username.invalid}"
+                     data-toggle="tooltip" title="Enter your username"
+                     name="username"
+                     placeholder="Username"
+                     >
+              <div class="valid-feedback"
+                   *ngIf="username.valid && username.dirty">username valid!
+              </div>
+              <div class="invalid-feedback" *ngIf="username.errors?.required && username.dirty">username required
+              </div>
+              <div class="invalid-feedback" *ngIf="username.errors?.pattern && username.dirty">username just allow
+                letters
+              </div>
+              <div class="invalid-feedback" *ngIf="username.errors?.minlength && username.dirty">username must be at
+                least 4 characters
+              </div>
+              <div class="invalid-feedback" *ngIf="username.errors?.maxlength && username.dirty">username must be
+                maximum 20 characters
+              </div>
+
+            </div>
+
+            <div class="form-group">
+
+              <input class="form-control"
+                     [(ngModel)]="user.email"
+                     (change)="validateEmailUserName(email.value, 'email')"
+                     type="email"
+                     name="email"
+                     email
+                     #email="ngModel" required
+                     [ngClass]="{'is-valid': email.dirty && email.valid, 'is-invalid': email.dirty && email.invalid}"
+                     data-toggle="tooltip" title="Enter your email"
+                     placeholder="Email"
+                     >
+
+              <div class="valid-feedback"
+                   *ngIf="email.valid && email.dirty">email valid!
+              </div>
+              <div class="invalid-feedback" *ngIf="email.errors?.required && email.dirty">email required
+              </div>
+              <div class="invalid-feedback" *ngIf="email.errors?.email && email.dirty">email invalid
+              </div>
+
+
+            </div>
+
+            <div class="form-group">
+
+              <input class="form-control"
+                     [(ngModel)]="user.password"
+                     type="password"
+                     name="password"
+                     #password="ngModel" required
+                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}"
+                     [ngClass]="{'is-valid': password.dirty && password.valid, 'is-invalid': password.dirty && password.invalid}"
+                     data-toggle="tooltip" title="Enter your password"
+                     placeholder="Password">
+
+
+              <div class="valid-feedback"
+                   *ngIf="password.valid && password.dirty">password valid!
+              </div>
+              <div class="invalid-feedback" *ngIf="password.errors?.required && password.dirty">password required
+              </div>
+              <div class="invalid-feedback" *ngIf="password.errors?.pattern && password.dirty">password invalid
+              </div>
+
+
+            </div>
+
+            <div class="form-group submtit">
+
+              <button type="submit"
+                      [disabled]="registerUserForm.invalid"
+                      class="ps-btn ps-btn--fullwidth">Register
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="ps-form__footer">
+
+            <p>Connect with:</p>
+
+            <ul class="ps-list--social">
+
+              <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a class="google" href="#"><i class="fab fa-google"></i></a></li>
+
+            </ul>
+
+          </div>
+
+        </div><!-- End Register Form -->
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

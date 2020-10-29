@@ -1,4 +1,5 @@
 declare var $: any;
+declare var swal: any;
 declare var jQuery: any;
 
 
@@ -399,3 +400,13 @@ export function stickyHeader() {
     });
   }
 }*/
+
+
+export function sweetAlert(type: string = 'success', message: string = 'Ok!', title: string = 'Success') {
+  swal({
+    title: title,
+    text: message,
+    icon: (type === 'success') ? 'success' : 'error',
+    button: 'Ok!',
+  });
+}
