@@ -22,7 +22,7 @@
 
   <div class="container">
 
-    <form class="ps-form--account ps-tab-root" action="link.html" method="get">
+    <form class="ps-form--account ps-tab-root" #formLogin="ngForm" (ngSubmit)="loginSend(formLogin)">
 
       <ul class="ps-tab-list">
         <li class="active"><a [routerLink]="['/login']">Login</a></li>
@@ -45,15 +45,51 @@
 
             <div class="form-group">
 
-              <input class="form-control" type="text" placeholder="Username or email address">
+              <input class="form-control"
+                     [(ngModel)]="user.email"
+                     name="email"
+                     #email="ngModel"
+                     email
+                     required
+                     [ngClass]="{'is-valid': email.dirty && email.valid, 'is-invalid': email.dirty && email.invalid}"
+                     data-toggle="tooltip" title="Enter your email"
+                     type="email" placeholder="Email address" [disabled]="loading">
+
+              <div class="valid-feedback"
+                   *ngIf="email.valid && email.dirty">email valid!
+              </div>
+              <div class="invalid-feedback" *ngIf="email.errors?.required && email.dirty">email required
+              </div>
+              <div class="invalid-feedback" *ngIf="email.errors?.email && email.dirty">email invalid
+              </div>
+
+
 
             </div>
 
             <div class="form-group form-forgot">
 
-              <input class="form-control" type="text" placeholder="Password">
+              <input class="form-control"
+                     [(ngModel)]="user.password"
+                     name="password"
+                     #password="ngModel"
+                     required
+                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}"
+                     data-toggle="tooltip" title="Enter your password"
+                     [ngClass]="{'is-valid': password.dirty && password.valid, 'is-invalid': password.dirty && password.invalid}"
+                     type="password" placeholder="Password" [disabled]="loading">
 
-              <a href="">Forgot?</a>
+              <div class="valid-feedback"
+                   *ngIf="password.valid && password.dirty">password valid!
+              </div>
+              <div class="invalid-feedback" *ngIf="password.errors?.required && password.dirty">password required
+              </div>
+              <div class="invalid-feedback" *ngIf="password.errors?.pattern && password.dirty">password invalid
+              </div>
+
+              <div>
+                <a href="">Forgot?</a>
+              </div>
 
             </div>
 
@@ -70,8 +106,9 @@
             </div>
 
             <div class="form-group submtit">
-
-              <button class="ps-btn ps-btn--fullwidth">Login</button>
+              <app-preload *ngIf="loading"></app-preload>
+              <button class="ps-btn ps-btn--fullwidth"
+              type="submit" [disabled]="formLogin.invalid || loading" >Login</button>
 
             </div>
 

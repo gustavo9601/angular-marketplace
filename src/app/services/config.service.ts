@@ -11,12 +11,14 @@ export class ConfigService {
   private _pathRegisterFirebase:string;
   private _apiKeyFirebase:string;
   private _api:string;
+  private _pathLoginFirbease:string;
 
   constructor() {
     this._path = config.url;
     this._pathRegisterFirebase = config.endPointCreateAccount;
     this._apiKeyFirebase = config.apiKeyFirebase;
     this._api = config.api;
+    this._pathLoginFirbease = config.endPointLogin;
   }
 
   get path() {
@@ -27,6 +29,10 @@ export class ConfigService {
     return this._pathRegisterFirebase;
   }
 
+  get pathLoginFirebase(){
+    return this._pathLoginFirbease;
+  }
+
   get apiKeyFirebase(){
     return this._apiKeyFirebase;
   }
@@ -34,5 +40,7 @@ export class ConfigService {
   get api(){
     return this._api;
   }
+
+
 
 }

@@ -22,8 +22,13 @@ export class UsersService {
     return this.httpClient.post(this._configService.api + 'users.json', user);
   }
 
+  loginUserFirebase(user: User) {
+    return this.httpClient.post(this._configService.pathLoginFirebase + this._configService.apiKeyFirebase, user);
+  }
+
   getFilterData(orderBy: string, equalTo: string) {
     return this.httpClient.get(this._configService.api + 'users.json?orderBy="' + orderBy + '"&equalTo="' + equalTo + '"');
   }
+
 
 }
