@@ -8,10 +8,14 @@ import {config} from '../config';
 export class ConfigService {
 
   private _path: string;
-  private _pathRegisterFirebase:string;
-  private _apiKeyFirebase:string;
-  private _api:string;
-  private _pathLoginFirbease:string;
+  private _pathRegisterFirebase: string;
+  private _apiKeyFirebase: string;
+  private _api: string;
+  private _pathLoginFirbease: string;
+  private _pathSendEmailVerification: string;
+  private _pathConfirmEmailVerification: string;
+  private _endPointGetUserDataAuth: string;
+  private _endPointRestPasswordUser: string;
 
   constructor() {
     this._path = config.url;
@@ -19,6 +23,10 @@ export class ConfigService {
     this._apiKeyFirebase = config.apiKeyFirebase;
     this._api = config.api;
     this._pathLoginFirbease = config.endPointLogin;
+    this._pathSendEmailVerification = config.endPointSendVerifcationEmail;
+    this._pathConfirmEmailVerification = config.endPointConfirmVerifcationEmail;
+    this._endPointGetUserDataAuth = config.endPointGetUserDataAuth;
+    this._endPointRestPasswordUser = config.endPointRestPasswordUser;
   }
 
   get path() {
@@ -29,18 +37,33 @@ export class ConfigService {
     return this._pathRegisterFirebase;
   }
 
-  get pathLoginFirebase(){
+  get pathLoginFirebase() {
     return this._pathLoginFirbease;
   }
 
-  get apiKeyFirebase(){
+  get apiKeyFirebase() {
     return this._apiKeyFirebase;
   }
 
-  get api(){
+  get api() {
     return this._api;
   }
 
+  get pathSendEmailVerification() {
+    return this._pathSendEmailVerification;
+  }
 
+  get pathConfirmEmailVerification() {
+    return this._pathConfirmEmailVerification;
+  }
+
+
+  get endPointGetUserDataAuth() {
+    return this._endPointGetUserDataAuth;
+  }
+
+  get endPointRestPasswordUser() {
+    return this._endPointRestPasswordUser;
+  }
 
 }

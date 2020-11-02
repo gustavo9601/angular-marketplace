@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   user: User;
 
   constructor(private _usersService: UsersService,
-              private router:Router) {
+              private router: Router) {
     this.user = new User();
   }
 
@@ -38,18 +38,34 @@ export class RegisterComponent implements OnInit {
 
         if (responseAuth['email'] == this.user.email) {
 
-          this.user.displayName = this.user.first_name + ' ' + this.user.last_name;
-          this.user.method = 'direct';
-          this.user.idToken = responseAuth['idToken'];
-          this.user.needConfirm = false;
 
-          // Alamacena en la BD el usuario
-          this._usersService.registerUserDatabase(this.user).subscribe(
-            (responseDB) => {
-              console.log('responseDB', responseDB);
-              formRegister.reset();
-              sweetAlert('success', 'User was created correctly, please check your email and cofirm asp', 'Success');
-              this.router.navigate(['/login']);
+          // Enviar correo de verfiicacion
+          const body = {
+            requestType: 'VERIFY_EMAIL',
+            idToken: responseAuth['idToken']
+          };
+          this._usersService.sendEmailVerificationFB(body).subscribe(
+            (responseSendEmail) => {
+              console.log('responseSendEmail', responseSendEmail);
+              // Si se envio correctamente el email
+              if (responseSendEmail['email'] == this.user.email) {
+
+
+                // Alamacena en la BD el usuario
+                this.user.displayName = this.user.first_name + ' ' + this.user.last_name;
+                this.user.method = 'direct';
+                this.user.idToken = responseAuth['idToken'];
+                this.user.needConfirm = false;
+                this._usersService.registerUserDatabase(this.user).subscribe(
+                  (responseDB) => {
+                    console.log('responseDB', responseDB);
+                    formRegister.reset();
+                    sweetAlert('success', 'User was created correctly, please check your email and cofirm asp', 'Success');
+                    this.router.navigate(['/login']);
+                  }
+                );
+
+              }
             }
           );
         }
@@ -73,5 +89,6 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+
 
 }

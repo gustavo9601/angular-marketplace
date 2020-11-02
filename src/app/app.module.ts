@@ -48,6 +48,7 @@ import { SimilarBoughtComponent } from './pages/product/similar-bought/similar-b
 import { RelatedProductComponent } from './pages/product/related-product/related-product.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { AccountComponent } from './pages/account/account.component';
 
 
 
@@ -97,6 +98,7 @@ import { RegisterComponent } from './pages/register/register.component';
     RelatedProductComponent,
     LoginComponent,
     RegisterComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,

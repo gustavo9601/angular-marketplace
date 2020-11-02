@@ -8,7 +8,8 @@ export class User {
   returnSecureToken: boolean;
   method:string;
   picture:string;
-  idToken:string;
+  idToken:string
   needConfirm:boolean;
   phone:string;
+  rememberMe?:boolean;
 }
